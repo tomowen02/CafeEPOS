@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPOSWinFormsUI", "EPOSWinFormsUI\EPOSWinFormsUI.csproj", "{3A209709-CF3C-448D-B565-CD9F72A3150E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPOSLibrary", "EPOSLibrary\EPOSLibrary.csproj", "{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A209709-CF3C-448D-B565-CD9F72A3150E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A209709-CF3C-448D-B565-CD9F72A3150E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A209709-CF3C-448D-B565-CD9F72A3150E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A209709-CF3C-448D-B565-CD9F72A3150E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E7BB292-93C7-4A7F-96BB-86DBC00A89AD}
+	EndGlobalSection
+EndGlobal
