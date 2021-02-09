@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EPOSLibrary.DataAccess
 {
-    public class TransactionItemsDataAccess : ConnectionString
+    public class TransactionItemsDataAccess : Connection<TransactionItemModel>
     {
         public static List<TransactionItemModel> Load(int transactionID)
         {
@@ -20,11 +20,7 @@ namespace EPOSLibrary.DataAccess
             var parameters = new DynamicParameters();
             parameters.Add("@TransactionID", transactionID);
 
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var output = cnn.Query<TransactionItemModel>(query, parameters);
-                return output.ToList();
-            }
+            return Query(query, parameters);
         }
 
         public static void Save(TransactionItemModel transactionItem)
@@ -32,10 +28,36 @@ namespace EPOSLibrary.DataAccess
             string query = "INSERT INTO TransactionItems (TransactionID, ProductID, Quantity, CurrentUnitPrice) " +
                 "VALUES (@TransactionID, @ProductID, @Quantity, @CurrentUnitPrice); ";
 
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                cnn.Execute(query, transactionItem);
-            }
+            var parameters = new DynamicParameters();
+            parameters.Add("@TransactionID", transactionItem.TransactionID);
+            parameters.Add("@ProductID", transactionItem.ProductID);
+            parameters.Add("@Quantity", transactionItem.Quantity);
+            parameters.Add("@CurrentUnitPrice", transactionItem.CurrentUnitPrice);
+
+            Execute(query, parameters);
+        }
+
+        public static void CreateTable()
+        {
+            string query = @"
+                CREATE TABLE TransactionItems (
+                    TransactionID
+                        INTEGER
+                        NOT NULL
+                        REFERENCES Transactions (TransactionID),
+                    ProductID
+                        INTEGER
+                        NOT NULL
+                        REFERENCES Transactions (TransactionID),
+                    Quantity
+                        INTEGER
+                        NOT NULL,
+                    CurrentUnitPrice
+                        INTEGER
+                        NOT NULL
+                );";
+
+            Execute(query);
         }
     }
 }

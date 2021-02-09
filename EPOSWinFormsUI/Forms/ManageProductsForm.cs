@@ -165,7 +165,7 @@ namespace EPOSWinFormsUI.Forms
             {
                 editProductInfoForm.ShowDialog();
             }
-            catch
+            catch (Exception excep)
             {
                 MessageBox.Show("Something went wrong");
             }

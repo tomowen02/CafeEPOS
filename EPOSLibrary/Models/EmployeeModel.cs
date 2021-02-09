@@ -20,7 +20,7 @@ namespace EPOSLibrary.Models
         /// This will be compared against when an emplyee attempts to login to their account
         /// </summary>
         public string HashedPass { get; set; }
-        public bool IsActive { get; set; }
+        public bool isActive { get; set; }
         public int RoleID { get; set; }
         public string Salt { get; set; }
     }

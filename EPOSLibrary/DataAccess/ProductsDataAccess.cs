@@ -9,29 +9,23 @@ using System.Threading.Tasks;
 
 namespace EPOSLibrary.DataAccess
 {
-    public class ProductsDataAccess : ConnectionString
+    public class ProductsDataAccess : Connection<ProductModel>
     {
-        // TODO - Inner join for product type
-
-        #region Load Products
-        private static List<ProductModel> SendQuery(string query, DynamicParameters parameters)
-        {
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var output = cnn.Query<ProductModel>(query, parameters);
-                return output.ToList();
-            }
-        }
-
+        /// <summary>
+        /// Loads a single product, identified by its ID from the database
+        /// </summary>
         public static ProductModel LoadSingle(int id)
         {
             string query = "SELECT ProductID, Description, ProductTypeID, Price/100.0 AS Price FROM Products WHERE ProductID = @id";
             var parameters = new DynamicParameters();
             parameters.Add("@id", id);
 
-            return SendQuery(query, parameters).First();
+            return Query(query, parameters).First();
         }
 
+        /// <summary>
+        /// Loads a list of products that satisfy the filters placed apon it. If no filters are specified, it will be assumed that none are to be applied
+        /// </summary>
         public static List<ProductModel> Load(string searchTerm = "", int typeID = -1, decimal minPrice = -1, decimal maxPrice = -1)
         {
             string query = "SELECT ProductID, Description, ProductTypeID, Price/100.0 AS Price FROM Products";
@@ -75,37 +69,80 @@ namespace EPOSLibrary.DataAccess
                 query += ' ' + conditions[i];
             }
 
-            return SendQuery(query, parameters);
-
-
+            return Query(query, parameters);
 
         }
-        #endregion
 
+        /// <summary>
+        /// Saves a product to the database
+        /// </summary>
+        /// <returns>Returns the same product back, but with the ProductID defined as the automatically generated ID from the database</returns>
         public static ProductModel Save(ProductModel product)
         {
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var id = (int)cnn.ExecuteScalar<int>("INSERT INTO Products (Description, ProductTypeID, Price) VALUES (@Description, @ProductTypeID, @Price * 100); SELECT last_insert_rowid()", product);
-                product.ProductID = id;
-                return product;
-            }
+            string query = "INSERT INTO Products (Description, ProductTypeID, Price) VALUES (@Description, @ProductTypeID, @Price * 100); SELECT last_insert_rowid()";
+
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@Description", product.Description);
+            parameters.Add("@ProductTypeID", product.ProductTypeID);
+            parameters.Add("@Price", product.Price);
+            
+            int id = Int32.Parse(ExecuteScalar(query, parameters));
+            product.ProductID = id;
+            return product;
         }
 
+        /// <summary>
+        /// Updates a specific row in the Product table in the database
+        /// </summary>
         public static void Update(ProductModel product)
         {
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                cnn.Execute("UPDATE Products SET Description = @Description, ProductTypeID = @ProductTypeID, Price = @Price*100 WHERE ProductID = @ProductID", product);
-            }
+            string query = "UPDATE Products SET Description = @Description, ProductTypeID = @ProductTypeID, Price = @Price*100 WHERE ProductID = @ProductID";
+
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@ProductID", product.ProductID);
+            parameters.Add("@Description", product.Description);
+            parameters.Add("@ProductTypeID", product.ProductTypeID);
+            parameters.Add("@Price", product.Price);
+
+            Execute(query, parameters);
         }
 
+        /// <summary>
+        /// Deletes a row from the products table from the database based on its ProductID
+        /// </summary>
         public static void Delete(int id)
         {
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                cnn.Execute("DELETE FROM Products WHERE ProductID = @id", new { id });
-            }
+            string query = "DELETE FROM Products WHERE ProductID = @ProductID";
+
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@ProductID", id);
+            Execute(query, parameters);
+        }
+
+        /// <summary>
+        /// Creates a new Products table in the database
+        /// </summary>
+        public static void CreateTable()
+        {
+            string query = @"
+                CREATE TABLE Products (
+                    ProductID
+                        INTEGER PRIMARY KEY AUTOINCREMENT
+                        UNIQUE
+                        NOT NULL,
+                    Description
+                        STRING
+                        NOT NULL,
+                    ProductTypeID
+                        STRING
+                        NOT NULL
+                        REFERENCES ProductTypes (ProductTypeID),
+                    Price
+                        INTEGER
+                        NOT NULL
+                );";
+
+            Execute(query);
         }
     }
 }

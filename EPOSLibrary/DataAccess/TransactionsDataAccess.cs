@@ -9,19 +9,13 @@ using System.Threading.Tasks;
 
 namespace EPOSLibrary.DataAccess
 {
-    public class TransactionsDataAccess : ConnectionString
+    public class TransactionsDataAccess : Connection<TransactionModel>
     {
         public static List<TransactionModel> Load()
         {
             string query = "SELECT TransactionID, Date, Total /100.0 AS Total, Change /100.0 AS Change, PaymentMethod, EmployeeUsername FROM Transactions";
-            var parameters = new DynamicParameters();
 
-
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var output = cnn.Query<TransactionModel>(query, parameters);
-                return output.ToList();
-            }
+            return Query(query);
         }
 
         public static TransactionModel Save(TransactionModel transaction)
@@ -30,12 +24,46 @@ namespace EPOSLibrary.DataAccess
                 "VALUES (@Date, @Total * 100, @Change * 100, @PaymentMethod, @EmployeeUsername); " +
                 "SELECT last_insert_rowid()";
 
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var id = (int)cnn.ExecuteScalar<int>(query, transaction);
-                transaction.TransactionID = id;
-                return transaction;
-            }
+            var parameters = new DynamicParameters();
+            parameters.Add("@Date", transaction.Date);
+            parameters.Add("@Total", transaction.Total);
+            parameters.Add("@Change", transaction.Change);
+            parameters.Add("@PaymentMethod", transaction.PaymentMethod);
+            parameters.Add("@EmployeeUsername", transaction.EmployeeUsername);
+
+            var id = Int32.Parse(ExecuteScalar(query, parameters));
+            transaction.TransactionID = id;
+            return transaction;
+        }
+
+        public static void CreateTable()
+        {
+            string query = @"
+                CREATE TABLE Transactions (
+                    TransactionID
+                        INTEGER
+                        PRIMARY KEY AUTOINCREMENT
+                        UNIQUE
+                        NOT NULL,
+                    Date
+                        DATETIME
+                        NOT NULL,
+                    Total
+                        INTEGER
+                        NOT NULL,
+                    Change
+                        INTEGER
+                        NOT NULL,
+                    PaymentMethod
+                        STRING
+                        NOT NULL,
+                    EmployeeUsername
+                        STRING
+                        NOT NULL
+                        REFERENCES Employees (EmployeeUsername) 
+                );";
+
+            Execute(query);
         }
     }
 }
