@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="DataAccess\Connection.cs" />
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
     <Compile Include="DataAccess\ProductsDataAccess.cs" />
     <Compile Include="DataAccess\ProductTypesDataAccess.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Models\TransactionItemModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataAccess\ConnectionString.cs" />
     <Compile Include="CustomStack.cs" />
     <Compile Include="StringHelpers.cs" />
   </ItemGroup>
