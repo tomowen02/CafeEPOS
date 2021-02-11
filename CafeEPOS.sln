@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPOSWinFormsUI", "EPOSWinFo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPOSLibrary", "EPOSLibrary\EPOSLibrary.csproj", "{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{123AC771-0995-4F74-AACC-CFA5E644822F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3C8A71D-5064-4AD1-BDC1-EEDEA7BB8526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{123AC771-0995-4F74-AACC-CFA5E644822F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{123AC771-0995-4F74-AACC-CFA5E644822F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{123AC771-0995-4F74-AACC-CFA5E644822F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{123AC771-0995-4F74-AACC-CFA5E644822F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

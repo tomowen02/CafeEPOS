@@ -22,25 +22,36 @@ namespace EPOSWinFormsUI.Forms
 
         private void SignInButton_Click(object sender, EventArgs e)
         {
-            if (UsernameTextBox.Text.Trim() != "")
+            SignIn();
+        }
+
+        private void SignIn()
+        {
+            if (UsernameTextBox.Text.Trim() != "") // Make sure that there is text inside of the input box
             {
-                string username = UsernameTextBox.Text.Trim();
+                string username = UsernameTextBox.Text.Trim(); // Ignores the spaces before or after the username
                 string password = PasswordTextBox.Text;
 
-                EmployeeModel user = EmployeeDataAccess.Load(username);
+                EmployeeModel user = EmployeeDataAccess.Load(username); // Load the user profile to see if the user exists
 
                 if (user != null)
                 {
+                    // Retrive the hash and the salt from the database and hash the input password
+
                     string salt = user.Salt;
 
                     string hashFromDatabase = user.HashedPass;
                     string hash = Hashing.Hash(password, salt);
 
-                    if (hash == hashFromDatabase)
+                    if (hash == hashFromDatabase) // Compare the calculated hash to the hash from the database
                     {
+                        // The login credentials are correct
+
+                        Session.Employee = user;
+
                         Form mainWindow = new MainWindowForm(this);
                         mainWindow.Show();
-                        this.Hide();
+                        this.Hide(); // Hide the login form
                     }
                     else
                     {
@@ -51,7 +62,7 @@ namespace EPOSWinFormsUI.Forms
                 {
                     MessageBox.Show("Please provide valid username");
                 }
-                
+
             }
         }
 

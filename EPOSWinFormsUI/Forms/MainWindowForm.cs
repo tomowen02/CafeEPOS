@@ -21,25 +21,22 @@ namespace EPOSWinFormsUI.Forms
         public MainWindowForm()
         {
             InitializeComponent();
-            InitializeSubmenus();
+            HideSubmenus();
         }
 
         public MainWindowForm(LoginForm login)
         {
             InitializeComponent();
-            InitializeSubmenus();
+            HideSubmenus();
 
             _loginForm = login;
-        }
 
-        // Possibly redundant
-        private void InitializeSubmenus()
-        {
-            HideSubmenus();
+            EmployeeNameLabel.Text = $"{Session.Employee.Firstname} {Session.Employee.Lastname}" ;
         }
 
         private void HideSubmenus()
         {
+            // Loop through all of the submenus and make sure that they are closed
             foreach (var submenu in SideBarNavPanel.Controls)
             {
                 if (submenu is Panel sub)

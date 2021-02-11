@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowForm));
             this.SideBarPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SideBarNavPanel = new System.Windows.Forms.Panel();
             this.CalculatorButton = new System.Windows.Forms.Button();
             this.StatsButton = new System.Windows.Forms.Button();
@@ -42,15 +39,18 @@
             this.ManageProductsButton = new System.Windows.Forms.Button();
             this.ShowStockManagementSubButton = new System.Windows.Forms.Button();
             this.OpenTillButton = new System.Windows.Forms.Button();
+            this.SessionPanel = new System.Windows.Forms.Panel();
+            this.EmployeeNameLabel = new System.Windows.Forms.Label();
+            this.EmployeeIconPictureBox = new System.Windows.Forms.PictureBox();
             this.UnderSideLogoPanel = new System.Windows.Forms.Panel();
             this.SideLogoPicture = new System.Windows.Forms.PictureBox();
             this.ChildFormPanel = new System.Windows.Forms.Panel();
             this.MainLogoPicture = new System.Windows.Forms.PictureBox();
             this.SideBarPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SideBarNavPanel.SuspendLayout();
             this.StockManagementSubPanel.SuspendLayout();
+            this.SessionPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeIconPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SideLogoPicture)).BeginInit();
             this.ChildFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainLogoPicture)).BeginInit();
@@ -60,7 +60,7 @@
             // 
             this.SideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.SideBarPanel.Controls.Add(this.SideBarNavPanel);
-            this.SideBarPanel.Controls.Add(this.panel1);
+            this.SideBarPanel.Controls.Add(this.SessionPanel);
             this.SideBarPanel.Controls.Add(this.UnderSideLogoPanel);
             this.SideBarPanel.Controls.Add(this.SideLogoPicture);
             this.SideBarPanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -69,37 +69,6 @@
             this.SideBarPanel.Name = "SideBarPanel";
             this.SideBarPanel.Size = new System.Drawing.Size(270, 611);
             this.SideBarPanel.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 546);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(270, 65);
-            this.panel1.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(58, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 21);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "James Timpson";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // SideBarNavPanel
             // 
@@ -247,6 +216,37 @@
             this.OpenTillButton.UseVisualStyleBackColor = true;
             this.OpenTillButton.Click += new System.EventHandler(this.OpenTillButton_Click);
             // 
+            // SessionPanel
+            // 
+            this.SessionPanel.Controls.Add(this.EmployeeNameLabel);
+            this.SessionPanel.Controls.Add(this.EmployeeIconPictureBox);
+            this.SessionPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SessionPanel.Location = new System.Drawing.Point(0, 546);
+            this.SessionPanel.Name = "SessionPanel";
+            this.SessionPanel.Size = new System.Drawing.Size(270, 65);
+            this.SessionPanel.TabIndex = 13;
+            // 
+            // EmployeeNameLabel
+            // 
+            this.EmployeeNameLabel.AutoSize = true;
+            this.EmployeeNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeeNameLabel.ForeColor = System.Drawing.Color.White;
+            this.EmployeeNameLabel.Location = new System.Drawing.Point(58, 22);
+            this.EmployeeNameLabel.Name = "EmployeeNameLabel";
+            this.EmployeeNameLabel.Size = new System.Drawing.Size(121, 21);
+            this.EmployeeNameLabel.TabIndex = 1;
+            this.EmployeeNameLabel.Text = "James Timpson";
+            // 
+            // EmployeeIconPictureBox
+            // 
+            this.EmployeeIconPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("EmployeeIconPictureBox.Image")));
+            this.EmployeeIconPictureBox.Location = new System.Drawing.Point(12, 15);
+            this.EmployeeIconPictureBox.Name = "EmployeeIconPictureBox";
+            this.EmployeeIconPictureBox.Size = new System.Drawing.Size(40, 40);
+            this.EmployeeIconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.EmployeeIconPictureBox.TabIndex = 0;
+            this.EmployeeIconPictureBox.TabStop = false;
+            // 
             // UnderSideLogoPanel
             // 
             this.UnderSideLogoPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -305,11 +305,11 @@
             this.Text = "Cafe EPOS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindowForm_FormClosing);
             this.SideBarPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.SideBarNavPanel.ResumeLayout(false);
             this.StockManagementSubPanel.ResumeLayout(false);
+            this.SessionPanel.ResumeLayout(false);
+            this.SessionPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeIconPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SideLogoPicture)).EndInit();
             this.ChildFormPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainLogoPicture)).EndInit();
@@ -332,8 +332,8 @@
         private System.Windows.Forms.Button OpenTillButton;
         private System.Windows.Forms.PictureBox MainLogoPicture;
         private System.Windows.Forms.Button CalculatorButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel SessionPanel;
+        private System.Windows.Forms.Label EmployeeNameLabel;
+        private System.Windows.Forms.PictureBox EmployeeIconPictureBox;
     }
 }

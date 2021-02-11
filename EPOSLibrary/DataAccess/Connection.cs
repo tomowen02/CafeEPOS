@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace EPOSLibrary.DataAccess
 {
+    // Shouldn't be inherited
     public class Connection<T>
     {
         /// <summary>
