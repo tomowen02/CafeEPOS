@@ -31,6 +31,8 @@ namespace EPOSWinFormsUI.Forms
 
             _loginForm = login;
 
+            ApplyPermRestrictions();
+
             EmployeeNameLabel.Text = $"{Session.Employee.Firstname} {Session.Employee.Lastname}" ;
         }
 
@@ -76,6 +78,14 @@ namespace EPOSWinFormsUI.Forms
             activeForm.BringToFront();
             activeForm.Show();
             HideSubmenus();
+        }
+
+        private void ApplyPermRestrictions()
+        {
+            if (Session.Role.RoleName != "Administrator")
+            {
+                AdminControlsButton.Visible = false;
+            }
         }
 
         #region Click events

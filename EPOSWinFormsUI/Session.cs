@@ -17,11 +17,13 @@ namespace EPOSWinFormsUI
             set 
             {
                 employee = value;
-                role = RoleDataAccess.Load(value.RoleID);
+
+                role.RoleID = value.RoleID;
+                role.RoleName = RoleDataAccess.Load(value.RoleID);
             }
         }
 
-        private static string role;
-        public static string Role { get { return role; } }
+        private static RoleModel role = new RoleModel();
+        public static RoleModel Role { get { return role; } }
     }
 }

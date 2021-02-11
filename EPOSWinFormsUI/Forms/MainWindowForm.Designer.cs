@@ -46,6 +46,7 @@
             this.SideLogoPicture = new System.Windows.Forms.PictureBox();
             this.ChildFormPanel = new System.Windows.Forms.Panel();
             this.MainLogoPicture = new System.Windows.Forms.PictureBox();
+            this.AdminControlsButton = new System.Windows.Forms.Button();
             this.SideBarPanel.SuspendLayout();
             this.SideBarNavPanel.SuspendLayout();
             this.StockManagementSubPanel.SuspendLayout();
@@ -73,6 +74,7 @@
             // SideBarNavPanel
             // 
             this.SideBarNavPanel.AutoScroll = true;
+            this.SideBarNavPanel.Controls.Add(this.AdminControlsButton);
             this.SideBarNavPanel.Controls.Add(this.CalculatorButton);
             this.SideBarNavPanel.Controls.Add(this.StatsButton);
             this.SideBarNavPanel.Controls.Add(this.TransactionHistoryButton);
@@ -95,7 +97,7 @@
             this.CalculatorButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CalculatorButton.Name = "CalculatorButton";
             this.CalculatorButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.CalculatorButton.Size = new System.Drawing.Size(270, 46);
+            this.CalculatorButton.Size = new System.Drawing.Size(253, 46);
             this.CalculatorButton.TabIndex = 12;
             this.CalculatorButton.Text = "Calculator";
             this.CalculatorButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -112,7 +114,7 @@
             this.StatsButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StatsButton.Name = "StatsButton";
             this.StatsButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.StatsButton.Size = new System.Drawing.Size(270, 46);
+            this.StatsButton.Size = new System.Drawing.Size(253, 46);
             this.StatsButton.TabIndex = 11;
             this.StatsButton.Text = "Statistics";
             this.StatsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,7 +131,7 @@
             this.TransactionHistoryButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TransactionHistoryButton.Name = "TransactionHistoryButton";
             this.TransactionHistoryButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.TransactionHistoryButton.Size = new System.Drawing.Size(270, 46);
+            this.TransactionHistoryButton.Size = new System.Drawing.Size(253, 46);
             this.TransactionHistoryButton.TabIndex = 10;
             this.TransactionHistoryButton.Text = "Transaction History";
             this.TransactionHistoryButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -145,7 +147,7 @@
             this.StockManagementSubPanel.Location = new System.Drawing.Point(0, 92);
             this.StockManagementSubPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StockManagementSubPanel.Name = "StockManagementSubPanel";
-            this.StockManagementSubPanel.Size = new System.Drawing.Size(270, 95);
+            this.StockManagementSubPanel.Size = new System.Drawing.Size(253, 95);
             this.StockManagementSubPanel.TabIndex = 7;
             // 
             // ManageProductTypesButton
@@ -158,7 +160,7 @@
             this.ManageProductTypesButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ManageProductTypesButton.Name = "ManageProductTypesButton";
             this.ManageProductTypesButton.Padding = new System.Windows.Forms.Padding(29, 0, 0, 0);
-            this.ManageProductTypesButton.Size = new System.Drawing.Size(270, 46);
+            this.ManageProductTypesButton.Size = new System.Drawing.Size(253, 46);
             this.ManageProductTypesButton.TabIndex = 5;
             this.ManageProductTypesButton.Text = "Manage Product Types";
             this.ManageProductTypesButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -175,7 +177,7 @@
             this.ManageProductsButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ManageProductsButton.Name = "ManageProductsButton";
             this.ManageProductsButton.Padding = new System.Windows.Forms.Padding(29, 0, 0, 0);
-            this.ManageProductsButton.Size = new System.Drawing.Size(270, 46);
+            this.ManageProductsButton.Size = new System.Drawing.Size(253, 46);
             this.ManageProductsButton.TabIndex = 4;
             this.ManageProductsButton.Text = "Manage products";
             this.ManageProductsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -192,7 +194,7 @@
             this.ShowStockManagementSubButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ShowStockManagementSubButton.Name = "ShowStockManagementSubButton";
             this.ShowStockManagementSubButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.ShowStockManagementSubButton.Size = new System.Drawing.Size(270, 46);
+            this.ShowStockManagementSubButton.Size = new System.Drawing.Size(253, 46);
             this.ShowStockManagementSubButton.TabIndex = 9;
             this.ShowStockManagementSubButton.Text = "Stock Management";
             this.ShowStockManagementSubButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -209,7 +211,7 @@
             this.OpenTillButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.OpenTillButton.Name = "OpenTillButton";
             this.OpenTillButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.OpenTillButton.Size = new System.Drawing.Size(270, 46);
+            this.OpenTillButton.Size = new System.Drawing.Size(253, 46);
             this.OpenTillButton.TabIndex = 8;
             this.OpenTillButton.Text = "Open Till";
             this.OpenTillButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -290,6 +292,22 @@
             this.MainLogoPicture.TabIndex = 3;
             this.MainLogoPicture.TabStop = false;
             // 
+            // AdminControlsButton
+            // 
+            this.AdminControlsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AdminControlsButton.FlatAppearance.BorderSize = 0;
+            this.AdminControlsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminControlsButton.ForeColor = System.Drawing.Color.White;
+            this.AdminControlsButton.Location = new System.Drawing.Point(0, 325);
+            this.AdminControlsButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AdminControlsButton.Name = "AdminControlsButton";
+            this.AdminControlsButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.AdminControlsButton.Size = new System.Drawing.Size(253, 46);
+            this.AdminControlsButton.TabIndex = 13;
+            this.AdminControlsButton.Text = "Admin Controls";
+            this.AdminControlsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AdminControlsButton.UseVisualStyleBackColor = true;
+            // 
             // MainWindowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -335,5 +353,6 @@
         private System.Windows.Forms.Panel SessionPanel;
         private System.Windows.Forms.Label EmployeeNameLabel;
         private System.Windows.Forms.PictureBox EmployeeIconPictureBox;
+        private System.Windows.Forms.Button AdminControlsButton;
     }
 }
