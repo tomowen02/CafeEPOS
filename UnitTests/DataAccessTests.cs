@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using EPOSLibrary.DataAccess;
+using EPOSLibrary;
+using System.Diagnostics;
 
 namespace UnitTests
 {
@@ -10,7 +11,7 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod1()
         {
-            Console.WriteLine(RoleDataAccess.Load(1));
+            Trace.WriteLine(Hashing.NewHash("hellothere", "1234"));
         }
     }
 }

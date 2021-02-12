@@ -12,80 +12,50 @@ namespace EPOSLibrary
     {
         public static string Hash(string password, string salt)
         {
-            password = salt + password;
+            string fullInput = salt + password;
+
 
             string hash = "";
-
-            // Sqaure all of the decimal ascii values, and then multiply together
-            bool firstPass = true;
-            foreach (char character in password)
+            // Square each ascii value, multiple by the value of i, and concatenate them together
+            for (int i = 0; i < fullInput.Length; i++)
             {
-                if (firstPass)
-                {
-                    hash = (Math.Pow((int)character, 2)).ToString();
-                    firstPass = false;
-                }
-                else
-                {
-                    int aciiSquared = (int)Math.Pow((int)character, 2);
-                    hash = (BigInteger.Parse(hash) * aciiSquared).ToString();
-                }
+                int asciiValue = (int)fullInput[i]; // Get the ascii value
+                asciiValue *= i; // This is to randomise the hash string a bit if the same character has been repeated lots of times
+                hash += Math.Pow((int)asciiValue, 2); // Square the value and concatenate it with the hash string
             }
 
-            // MOD by 16 to allow it to fit ?
 
-            // Add ajacent pairs
-            string tempHash = "";
-            if (hash.Length % 2 == 1)
-            {
-                // Incase the string is an odd number in length (so that the last digit still has a pair)
-                hash += "0";
-            }
-            for (int i = 0; i < hash.Length; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    int one = int.Parse(hash[i].ToString());
-                    int two = int.Parse(hash[i + 1].ToString());
-                    tempHash += (one + two).ToString();
-                }
-            }
-            hash = tempHash;
-
-            // Square value
-            //hash = ((int)Math.Pow(int.Parse(hash), 2)).ToString();
-
-            // Use the MOD function to shorten this down to 8 characters long
-            hash = (BigInteger.Parse(hash) % (int)Math.Pow(10, 48)).ToString();
-
-            // Convert to charaters
-            List<string> charCodes = new List<string>();
+            // Split into chunks of three digits
+            List<string> triplets = new List<string>();
+            string current = "";
             for (int i = 0; i < hash.Length; i++)
             {
                 if (i % 3 == 0)
                 {
-                    // New triplet
-                    charCodes.Add(hash[i].ToString());
+                    triplets.Add(current);
+                    current = hash[i].ToString();
                 }
                 else
                 {
-                    charCodes[charCodes.Count - 1] += hash[i].ToString();
+                    current += hash[i];
                 }
             }
-            for (int i = 0; i < charCodes.Count; i++)
-            {
-                int asciiCode = (int.Parse(charCodes[i]) % 94) + 33;
-                charCodes[i] = ((char)asciiCode).ToString();
-            }
-
+            triplets.RemoveAt(0); // The first index has an empty string
+            // We now have a list of 3 digit long strings
+            
+            
+            // Convert chunks into the correct ranges for decimal ascii values
             hash = "";
-            // Join charCodes
-            foreach (string charater in charCodes)
+            for (int i = 0; i < triplets.Count; i++)
             {
-                hash += charater;
+                int asciiValue = int.Parse(triplets[i]) % 94; // There are 94 readable characters on an acii table
+                asciiValue += 33; // Makes sure that the ascii numbers are within the readable range
+                if (asciiValue == 34 || asciiValue == 39) // Make sure that the character is not " or ' as these are escape characters for strings
+                {
+                    asciiValue += 1;
+                }
+                hash += (char)asciiValue;
             }
-
-
 
             return hash;
         }

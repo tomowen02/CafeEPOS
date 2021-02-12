@@ -13,9 +13,6 @@ namespace EPOSWinFormsUI.Forms
 {
     public partial class MainWindowForm : Form
     {
-
-        // TODO - Login system
-
         private LoginForm _loginForm;
 
         public MainWindowForm()
@@ -82,9 +79,18 @@ namespace EPOSWinFormsUI.Forms
 
         private void ApplyPermRestrictions()
         {
-            if (Session.Role.RoleName != "Administrator")
+            if (Session.Role.RoleID > 1)
             {
+                // The employee is not an admin
                 AdminControlsButton.Visible = false;
+            }
+
+            if (Session.Role.RoleID > 2)
+            {
+                // The employee is lower on the perissions hierarchy than a manager
+                ShowStockManagementSubButton.Visible = false;
+                StatsButton.Visible = false;
+
             }
         }
 
