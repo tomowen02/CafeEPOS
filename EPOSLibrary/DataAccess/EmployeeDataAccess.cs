@@ -73,6 +73,18 @@ namespace EPOSLibrary.DataAccess
             return employee;
         }
 
+        public static void ChangePassword(string employeeUsername, string hashedPassword, string salt)
+        {
+            string query = "UPDATE Employees SET HashedPass = @HashedPass, Salt = @Salt WHERE EmployeeUsername = @EmployeeUsername";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmployeeUsername", employeeUsername);
+            parameters.Add("@HashedPass", hashedPassword);
+            parameters.Add("@Salt", salt);
+
+            Execute(query, parameters);
+        }
+
         public static void CreateTable()
         {
             string query = @"
