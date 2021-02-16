@@ -24,7 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
-    <IntermediateOutputPath>C:\Users\tomim\AppData\Local\Temp\vsE47.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\TOMOWE~1\AppData\Local\Temp\vsBBA1.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
-    <IntermediateOutputPath>C:\Users\tomim\AppData\Local\Temp\vsE47.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\TOMOWE~1\AppData\Local\Temp\vsBBA1.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">

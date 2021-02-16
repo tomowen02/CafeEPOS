@@ -11,6 +11,7 @@ namespace EPOSLibrary.DataAccess
 {
     public class ProductsDataAccess : Connection<ProductModel>
     {
+
         /// <summary>
         /// Loads a single product, identified by its ID from the database
         /// </summary>
@@ -24,18 +25,20 @@ namespace EPOSLibrary.DataAccess
         }
 
         /// <summary>
-        /// Loads a list of products that satisfy the filters placed apon it. If no filters are specified, it will be assumed that none are to be applied
+        /// Loads a list of products that satisfy the filters specified. If no filters are specified, it will be assumed that none are to be applied
         /// </summary>
         public static List<ProductModel> Load(string searchTerm = "", int typeID = -1, decimal minPrice = -1, decimal maxPrice = -1)
         {
             string query = "SELECT ProductID, Description, ProductTypeID, Price/100.0 AS Price FROM Products";
 
-            List<string> conditions = new List<string>();
+            List<string> conditions = new List<string>(); // This will store a list of the extra parts of the query specific to each filter
             var parameters = new DynamicParameters();
 
+            // The value of the filter parameters need to be checked if they are the default values
+            // If they have been defined and are not the default values, then the condition needs to be added to the conditions list
             if (searchTerm != "")
             {
-                conditions.Add("Description LIKE '%' || @searchTerm || '%'");
+                conditions.Add("Description LIKE '%' || @searchTerm || '%'"); // the description must contain the search term in any part of the string
                 parameters.Add("@searchTerm", searchTerm);
             }
             if (typeID != -1)
@@ -56,21 +59,23 @@ namespace EPOSLibrary.DataAccess
                 parameters.Add("@maxPrice", maxPrice);
             }
 
+            // The different conditions must now be concatenated to the end of he query
             for (int i = 0; i < conditions.Count; i++)
             {
                 if (i == 0)
                 {
+                    // This is the first condition, so WHERE needs to be inserted before the condition
                     query += " WHERE";
                 }
                 else
                 {
+                    // There has already been previous conditions so the AND operator means that this new condition must also be met
                     query += " AND";
                 }
                 query += ' ' + conditions[i];
             }
 
             return Query(query, parameters);
-
         }
 
         /// <summary>

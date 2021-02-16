@@ -8,8 +8,8 @@ namespace EPOSLibrary.Models
 {
     public class CartItemModel
     {
-        private ProductModel product;
-        public ProductModel Product
+        private ProductModel product; // Private field
+        public ProductModel Product // Public property used to access the field. This is an example of encapsulation
         {
             get { return product; }
             set 

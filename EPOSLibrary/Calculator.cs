@@ -12,13 +12,13 @@ namespace EPOSLibrary
         // TODO - Check validity
         // TODO - Add decimal place support
 
-        public static List<string> ConvertToRPN(List<string> inFixQueue)
+        public static List<string> ConvertToRPN(List<string> inFixExpression)
         {
             List<string> RPN = new List<string>();
 
             string poppedOperator;
             CustomStack<string> operators = new CustomStack<string>();
-            foreach (string current in inFixQueue)
+            foreach (string current in inFixExpression)
             {
                 if (current.IsNumeric())
                 {

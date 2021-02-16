@@ -41,7 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
-    <IntermediateOutputPath>C:\Users\tomim\AppData\Local\Temp\vsEDBD.tmp\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\TOMOWE~1\AppData\Local\Temp\vsB660.tmp\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,7 +52,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
-    <IntermediateOutputPath>C:\Users\tomim\AppData\Local\Temp\vsEDBD.tmp\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\TOMOWE~1\AppData\Local\Temp\vsB660.tmp\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>0CDDD9524BFA648B9F06A5ADF47860E832033EC6</ManifestCertificateThumbprint>
@@ -78,10 +78,10 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
-    <IntermediateOutputPath>C:\Users\tomim\AppData\Local\Temp\vsEDBD.tmp\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\TOMOWE~1\AppData\Local\Temp\vsB660.tmp\x64\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IntermediateOutputPath>C:\Users\tomim\AppData\Local\Temp\vsEDBD.tmp\x64\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\TOMOWE~1\AppData\Local\Temp\vsB660.tmp\x64\Release\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">

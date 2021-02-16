@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace EPOSLibrary.DataAccess
 {
-    // Shouldn't be inherited
     public class Connection<T>
     {
         /// <summary>
@@ -32,11 +31,12 @@ namespace EPOSLibrary.DataAccess
         {
             if (parameters == null)
             {
-                parameters = new DynamicParameters();
+                parameters = new DynamicParameters(); // This is to ensure that there isn't a null exception if no parameters are parsed
             }
             
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
+            using (var cnn = new SQLiteConnection(LoadConnectionString())) // The using statement ensures that the connection is closed/ disposed of after use
             {
+                // This calls the execute scalar method which is part of the Dapper library
                 var result = cnn.ExecuteScalar(query, parameters).ToString();
 
                 return result;
@@ -50,28 +50,30 @@ namespace EPOSLibrary.DataAccess
         {
             if (parameters == null)
             {
-                parameters = new DynamicParameters();
+                parameters = new DynamicParameters(); // This is to ensure that there isn't a null exception if no parameters are parsed
             }
 
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
+            using (var cnn = new SQLiteConnection(LoadConnectionString())) // The using statement ensures that the connection is closed/ disposed of after use
             {
+                // This calls the execute method which is part of the Dapper library
                 cnn.Execute(query, parameters);
             }
         }
 
         /// <summary>
-        /// Executes a parameterised SQL query that will return a multile records
+        /// Executes a parameterised SQL query that will return a multiple records
         /// </summary>
-        /// <returns>A list of objects repesenting rows on a table</returns>
+        /// <returns>A list of objects representing rows on a table</returns>
         public static List<T> Query(string query, DynamicParameters parameters = null)
         {
             if (parameters == null)
             {
-                parameters = new DynamicParameters();
+                parameters = new DynamicParameters(); // This is to ensure that there isn't a null exception if no parameters are parsed
             }
 
-            using (var cnn = new SQLiteConnection(LoadConnectionString()))
+            using (var cnn = new SQLiteConnection(LoadConnectionString())) // The using statement ensures that the connection is closed/ disposed of after use
             {
+                // This calls the query method which is part of the Dapper library
                 var output = cnn.Query<T>(query, parameters);
                 return output.ToList();
             }

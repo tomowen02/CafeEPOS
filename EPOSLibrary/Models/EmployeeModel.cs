@@ -17,7 +17,7 @@ namespace EPOSLibrary.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         /// <summary>
-        /// This will be compared against when an emplyee attempts to login to their account
+        /// This will be compared against when an employee attempts to login to their account
         /// </summary>
         public string HashedPass { get; set; }
         public bool isActive { get; set; }
