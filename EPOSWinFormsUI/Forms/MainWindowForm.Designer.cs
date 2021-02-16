@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowForm));
             this.SideBarPanel = new System.Windows.Forms.Panel();
             this.SideBarNavPanel = new System.Windows.Forms.Panel();
+            this.AdminControlsButton = new System.Windows.Forms.Button();
             this.CalculatorButton = new System.Windows.Forms.Button();
             this.StatsButton = new System.Windows.Forms.Button();
             this.TransactionHistoryButton = new System.Windows.Forms.Button();
@@ -46,7 +48,9 @@
             this.SideLogoPicture = new System.Windows.Forms.PictureBox();
             this.ChildFormPanel = new System.Windows.Forms.Panel();
             this.MainLogoPicture = new System.Windows.Forms.PictureBox();
-            this.AdminControlsButton = new System.Windows.Forms.Button();
+            this.LogOutContextButton = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShowUserOptionsButton = new System.Windows.Forms.Button();
             this.SideBarPanel.SuspendLayout();
             this.SideBarNavPanel.SuspendLayout();
             this.StockManagementSubPanel.SuspendLayout();
@@ -55,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SideLogoPicture)).BeginInit();
             this.ChildFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainLogoPicture)).BeginInit();
+            this.LogOutContextButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // SideBarPanel
@@ -86,6 +91,22 @@
             this.SideBarNavPanel.Name = "SideBarNavPanel";
             this.SideBarNavPanel.Size = new System.Drawing.Size(270, 345);
             this.SideBarNavPanel.TabIndex = 7;
+            // 
+            // AdminControlsButton
+            // 
+            this.AdminControlsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AdminControlsButton.FlatAppearance.BorderSize = 0;
+            this.AdminControlsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AdminControlsButton.ForeColor = System.Drawing.Color.White;
+            this.AdminControlsButton.Location = new System.Drawing.Point(0, 325);
+            this.AdminControlsButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AdminControlsButton.Name = "AdminControlsButton";
+            this.AdminControlsButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.AdminControlsButton.Size = new System.Drawing.Size(253, 46);
+            this.AdminControlsButton.TabIndex = 13;
+            this.AdminControlsButton.Text = "Admin Controls";
+            this.AdminControlsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AdminControlsButton.UseVisualStyleBackColor = true;
             // 
             // CalculatorButton
             // 
@@ -220,6 +241,7 @@
             // 
             // SessionPanel
             // 
+            this.SessionPanel.Controls.Add(this.ShowUserOptionsButton);
             this.SessionPanel.Controls.Add(this.EmployeeNameLabel);
             this.SessionPanel.Controls.Add(this.EmployeeIconPictureBox);
             this.SessionPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -292,21 +314,31 @@
             this.MainLogoPicture.TabIndex = 3;
             this.MainLogoPicture.TabStop = false;
             // 
-            // AdminControlsButton
+            // LogOutContextButton
             // 
-            this.AdminControlsButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AdminControlsButton.FlatAppearance.BorderSize = 0;
-            this.AdminControlsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdminControlsButton.ForeColor = System.Drawing.Color.White;
-            this.AdminControlsButton.Location = new System.Drawing.Point(0, 325);
-            this.AdminControlsButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.AdminControlsButton.Name = "AdminControlsButton";
-            this.AdminControlsButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.AdminControlsButton.Size = new System.Drawing.Size(253, 46);
-            this.AdminControlsButton.TabIndex = 13;
-            this.AdminControlsButton.Text = "Admin Controls";
-            this.AdminControlsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AdminControlsButton.UseVisualStyleBackColor = true;
+            this.LogOutContextButton.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logOutToolStripMenuItem});
+            this.LogOutContextButton.Name = "LogOutContextButton";
+            this.LogOutContextButton.Size = new System.Drawing.Size(116, 26);
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.logOutToolStripMenuItem.Text = "Log out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
+            // ShowUserOptionsButton
+            // 
+            this.ShowUserOptionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowUserOptionsButton.ForeColor = System.Drawing.Color.White;
+            this.ShowUserOptionsButton.Location = new System.Drawing.Point(214, 17);
+            this.ShowUserOptionsButton.Name = "ShowUserOptionsButton";
+            this.ShowUserOptionsButton.Size = new System.Drawing.Size(39, 31);
+            this.ShowUserOptionsButton.TabIndex = 2;
+            this.ShowUserOptionsButton.Text = "☰";
+            this.ShowUserOptionsButton.UseVisualStyleBackColor = true;
+            this.ShowUserOptionsButton.Click += new System.EventHandler(this.ShowUserOptionsButton_Click);
             // 
             // MainWindowForm
             // 
@@ -331,6 +363,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SideLogoPicture)).EndInit();
             this.ChildFormPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainLogoPicture)).EndInit();
+            this.LogOutContextButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -354,5 +387,8 @@
         private System.Windows.Forms.Label EmployeeNameLabel;
         private System.Windows.Forms.PictureBox EmployeeIconPictureBox;
         private System.Windows.Forms.Button AdminControlsButton;
+        private System.Windows.Forms.ContextMenuStrip LogOutContextButton;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.Button ShowUserOptionsButton;
     }
 }

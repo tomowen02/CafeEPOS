@@ -329,7 +329,7 @@ namespace EPOSWinFormsUI
                     Total = Total,
                     Change = e.Change,
                     PaymentMethod = e.PaymentType,
-                    EmployeeUsername = "UNKOWN USER" // TODO - Change this
+                    EmployeeUsername = EPOSLibrary.LoginSystem.Session.Employee.EmployeeUsername
                 };
                 transaction = TransactionsDataAccess.Save(transaction);
 

@@ -43,6 +43,7 @@ namespace EPOSWinFormsUI.Forms
 
                     Form mainWindow = new MainWindowForm(this);
                     mainWindow.Show();
+                    ResetForm();
                     this.Hide(); // Hide the login form
                 }
                 else
@@ -50,6 +51,13 @@ namespace EPOSWinFormsUI.Forms
                     MessageBox.Show("Please provide valid login credentials");
                 }
             }
+        }
+
+        private void ResetForm()
+        {
+            UsernameTextBox.Text = "";
+            PasswordTextBox.Text = "";
+            UsernameTextBox.Select();
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

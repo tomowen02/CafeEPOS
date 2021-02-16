@@ -12,9 +12,12 @@ using System.Windows.Forms;
 
 namespace EPOSWinFormsUI.Forms
 {
+
+    // TODO - visable vs hide?
     public partial class MainWindowForm : Form
     {
         private LoginForm _loginForm;
+        private bool _safeLogout = false;
 
         public MainWindowForm()
         {
@@ -136,10 +139,25 @@ namespace EPOSWinFormsUI.Forms
 
         private void MainWindowForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_loginForm != null)
+            if (_loginForm != null & _safeLogout == false)
             {
                 _loginForm.Close();
             }
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Logging out");
+
+            _safeLogout = true;
+            this.Hide();
+            _loginForm.Show();
+            this.Close();
+        }
+
+        private void ShowUserOptionsButton_Click(object sender, EventArgs e)
+        {
+            LogOutContextButton.Show(Cursor.Position.X, Cursor.Position.Y);
         }
     }
 }
