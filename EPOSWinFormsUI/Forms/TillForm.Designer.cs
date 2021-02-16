@@ -110,6 +110,7 @@
             // 
             // ProductTypeComboBox
             // 
+            this.ProductTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProductTypeComboBox.FormattingEnabled = true;
             this.ProductTypeComboBox.Location = new System.Drawing.Point(468, 16);
             this.ProductTypeComboBox.Name = "ProductTypeComboBox";

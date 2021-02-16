@@ -72,9 +72,7 @@
             // 
             // CalculatorBackPanel
             // 
-            this.CalculatorBackPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CalculatorBackPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CalculatorBackPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CalculatorBackPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CalculatorBackPanel.Controls.Add(this.ResultLabel);

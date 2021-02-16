@@ -61,7 +61,7 @@ namespace EPOSWinFormsUI.Forms
 
 
             EditProductTypeInfoForm editProductTypeInfoForm = new EditProductTypeInfoForm(type);
-            editProductTypeInfoForm.ProductTypeGenerated += new EditProductTypeInfoForm.ProductTypeGeneratedEvent(NewOrEditedType); //new
+            editProductTypeInfoForm.ProductTypeGenerated += new EditProductTypeInfoForm.ProductTypeGeneratedEvent(NewOrEditedType);
             editProductTypeInfoForm.StartPosition = FormStartPosition.CenterParent;
 
             try
@@ -76,20 +76,25 @@ namespace EPOSWinFormsUI.Forms
 
         private void DeleteTypeButton_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this?", "Delete product type", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                int productTypeID = GetSelectedType().ProductTypeID;
-                ProductTypesDataAccess.Delete(productTypeID);
+                try
+                {
+                    int productTypeID = GetSelectedType().ProductTypeID;
+                    ProductTypesDataAccess.Delete(productTypeID);
 
-                MessageBox.Show("Product type has been deleted");
+                    MessageBox.Show("Product type has been deleted");
+                }
+                catch
+                {
+
+                    MessageBox.Show("Something went wrong");
+                }
+
+                UpdateData();
             }
-            catch
-            {
-
-                MessageBox.Show("Something went wrong");
-            }
-
-            UpdateData();
+            
         }
 
         private void NewOrEditedType(object sender, ProductTypeGeneratedEventArgs e)

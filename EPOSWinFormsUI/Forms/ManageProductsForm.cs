@@ -68,7 +68,14 @@ namespace EPOSWinFormsUI.Forms
                 }
                 else
                 {
-                    minPrice = Decimal.Parse(MinPriceFilterTextBox.Text);
+                    try
+                    {
+                        minPrice = Decimal.Parse(MinPriceFilterTextBox.Text);
+                    }
+                    catch (Exception)
+                    {
+                        minPrice = -1M;
+                    }
                 }
                 decimal maxPrice;
                 if (MaxPriceFilterTextBox.Text == "" | !PriceCheckBox.Checked)
@@ -77,7 +84,14 @@ namespace EPOSWinFormsUI.Forms
                 }
                 else
                 {
-                    maxPrice = Decimal.Parse(MaxPriceFilterTextBox.Text);
+                    try
+                    {
+                        maxPrice = Decimal.Parse(MaxPriceFilterTextBox.Text);
+                    }
+                    catch (Exception)
+                    {
+                        maxPrice = -1M;
+                    }
                 }
 
                 List<ProductModel> products = ProductsDataAccess.Load(nameFilter, productTypeID, minPrice, maxPrice);
@@ -119,6 +133,7 @@ namespace EPOSWinFormsUI.Forms
         private void MaxPriceFilterTextBox_TextChanged(object sender, EventArgs e)
         {
             Filter();
+            PriceCheckBox.Checked = true;
         }
 
         private void ProductNameCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -165,7 +180,7 @@ namespace EPOSWinFormsUI.Forms
             {
                 editProductInfoForm.ShowDialog();
             }
-            catch (Exception excep)
+            catch (Exception)
             {
                 MessageBox.Show("Something went wrong");
             }
@@ -194,19 +209,25 @@ namespace EPOSWinFormsUI.Forms
 
         private void DeleteProductButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int productID = GetSelectedProduct().ProductID;
-                ProductsDataAccess.Delete(productID);
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this item?", "Delete product", MessageBoxButtons.YesNo);
 
-                MessageBox.Show("Product has been deleted");
-            } catch
+            if (dialogResult == DialogResult.Yes)
             {
+                try
+                {
+                    int productID = GetSelectedProduct().ProductID;
+                    ProductsDataAccess.Delete(productID);
 
-                MessageBox.Show("Something went wrong");
+                    MessageBox.Show("Product has been deleted");
+                }
+                catch
+                {
+
+                    MessageBox.Show("Something went wrong");
+                }
+
+                InitializeData();
             }
-
-            InitializeData();
         }
 
         private void NewOrEditedProduct(object sender, ProductGeneratedEventArgs e)

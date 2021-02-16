@@ -73,19 +73,27 @@ namespace EPOSWinFormsUI.Forms
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            ProductModel product = new ProductModel();
-            product.Description = ProductDescriptionTextbox.Text;
-            product.ProductTypeID = ((ProductTypeModel)ProductTypeComboBox.SelectedItem).ProductTypeID;
-            product.Price = Decimal.Parse(PriceTextbox.Text);
-
-            if (ExistingProduct != null)
+            if (ProductDescriptionTextbox.Text != "" & PriceTextbox.Text != "")
             {
-                product.ProductID = ExistingProduct.ProductID;
+                ProductModel product = new ProductModel();
+                product.Description = ProductDescriptionTextbox.Text;
+                product.ProductTypeID = ((ProductTypeModel)ProductTypeComboBox.SelectedItem).ProductTypeID;
+                product.Price = Decimal.Parse(PriceTextbox.Text);
+
+                if (ExistingProduct != null)
+                {
+                    product.ProductID = ExistingProduct.ProductID;
+                }
+
+                ProductGenerated(this, new ProductGeneratedEventArgs() { IsNewItem = IsNewItem, Product = product });
+
+                this.Close();
             }
-
-            ProductGenerated(this, new ProductGeneratedEventArgs() { IsNewItem = IsNewItem, Product = product });
-
-            this.Close();
+            else
+            {
+                MessageBox.Show("Invalid values");
+            }
+            
         }
     }
 

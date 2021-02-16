@@ -47,7 +47,7 @@ namespace EPOSWinFormsUI.Forms
                     expression.Add(newItem);
                 }
             }
-            else if (expression.Count > 0)
+            else if (expression.Count > 1)
             {
                 string lastValue = expression.Last();
 
@@ -80,7 +80,6 @@ namespace EPOSWinFormsUI.Forms
             int result = Calculator.EvaluateRPN(rpn);
             expression.Clear();
             ResultTextbox.Text = result.ToString();
-            Console.WriteLine(result);
         }
 
         private void ACButton_Click(object sender, EventArgs e)
@@ -189,7 +188,10 @@ namespace EPOSWinFormsUI.Forms
 
         private void DecimalButton_Click(object sender, EventArgs e)
         {
-
+            if (expression.Last().IsNumeric())
+            {
+                expression[expression.Count - 1] += ".";
+            }
         }
 
         private void CloseFormButton_Click(object sender, EventArgs e)
