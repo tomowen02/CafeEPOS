@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPOSLibrary
+namespace EPOSLibrary.LoginSystem
 {
     public static class Hashing
     {
@@ -59,5 +59,19 @@ namespace EPOSLibrary
 
             return hash;
         }
+
+        public static bool ComparePasswordWithHash(string userPassword, string userSalt, string databaseHash)
+        {
+            string userHash = Hash(userPassword, userSalt);
+
+            if (userHash == databaseHash)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
     }
 }

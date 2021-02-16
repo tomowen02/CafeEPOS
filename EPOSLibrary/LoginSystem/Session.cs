@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPOSWinFormsUI
+namespace EPOSLibrary.LoginSystem
 {
     public static class Session
     {

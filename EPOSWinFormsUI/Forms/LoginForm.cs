@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EPOSLibrary;
 using EPOSLibrary.DataAccess;
+using EPOSLibrary.LoginSystem;
 using EPOSLibrary.Models;
 
 namespace EPOSWinFormsUI.Forms
@@ -27,42 +28,27 @@ namespace EPOSWinFormsUI.Forms
 
         private void SignIn()
         {
-            if (UsernameTextBox.Text.Trim() != "") // Make sure that there is text inside of the input box
-            {
-                string username = UsernameTextBox.Text.Trim(); // Ignores the spaces before or after the username
-                string password = PasswordTextBox.Text;
+            string username = UsernameTextBox.Text.Trim(); // Ignores the spaces before or after the username
+            string password = PasswordTextBox.Text;
 
+            if (username != "") // Make sure that there is text inside of the input box
+            {
                 EmployeeModel user = EmployeeDataAccess.Load(username); // Load the user profile to see if the user exists
 
-                if (user != null)
+                if (UserLogin.ValidateUserCreds(username, password))
                 {
-                    // Retrive the hash and the salt from the database and hash the input password
+                    // The login credentials are correct
 
-                    string salt = user.Salt;
+                    Session.Employee = user;
 
-                    string hashFromDatabase = user.HashedPass;
-                    string hash = Hashing.Hash(password, salt);
-
-                    if (hash == hashFromDatabase) // Compare the calculated hash to the hash from the database
-                    {
-                        // The login credentials are correct
-
-                        Session.Employee = user;
-
-                        Form mainWindow = new MainWindowForm(this);
-                        mainWindow.Show();
-                        this.Hide(); // Hide the login form
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please provide valid credentials");
-                    }
+                    Form mainWindow = new MainWindowForm(this);
+                    mainWindow.Show();
+                    this.Hide(); // Hide the login form
                 }
                 else
                 {
-                    MessageBox.Show("Please provide valid username");
+                    MessageBox.Show("Please provide valid login credentials");
                 }
-
             }
         }
 

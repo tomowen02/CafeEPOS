@@ -177,7 +177,6 @@
     <Compile Include="Forms\TillForm.Designer.cs">
       <DependentUpon>TillForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Session.cs" />
     <Compile Include="UserControls\ShoppingCartUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
