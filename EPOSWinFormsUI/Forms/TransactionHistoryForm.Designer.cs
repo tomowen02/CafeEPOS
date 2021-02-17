@@ -36,6 +36,7 @@ namespace EPOSWinFormsUI.Forms
             this.TotalLabel = new System.Windows.Forms.Label();
             this.TotalTextbox = new System.Windows.Forms.TextBox();
             this.InfoLabel = new System.Windows.Forms.Label();
+            this.DailyOnlyCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,12 +130,26 @@ namespace EPOSWinFormsUI.Forms
             this.InfoLabel.TabIndex = 49;
             this.InfoLabel.Text = "Today\'s transactions are:";
             // 
+            // DailyOnlyCheckBox
+            // 
+            this.DailyOnlyCheckBox.AutoSize = true;
+            this.DailyOnlyCheckBox.Checked = true;
+            this.DailyOnlyCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.DailyOnlyCheckBox.Location = new System.Drawing.Point(409, 34);
+            this.DailyOnlyCheckBox.Name = "DailyOnlyCheckBox";
+            this.DailyOnlyCheckBox.Size = new System.Drawing.Size(245, 25);
+            this.DailyOnlyCheckBox.TabIndex = 50;
+            this.DailyOnlyCheckBox.Text = "Only show today\'s transactions";
+            this.DailyOnlyCheckBox.UseVisualStyleBackColor = true;
+            this.DailyOnlyCheckBox.CheckedChanged += new System.EventHandler(this.DailyOnlyCheckBox_CheckedChanged);
+            // 
             // TransactionHistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1014, 611);
+            this.Controls.Add(this.DailyOnlyCheckBox);
             this.Controls.Add(this.InfoLabel);
             this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.TotalTextbox);
@@ -162,5 +177,6 @@ namespace EPOSWinFormsUI.Forms
         private System.Windows.Forms.Label TotalLabel;
         private System.Windows.Forms.TextBox TotalTextbox;
         private System.Windows.Forms.Label InfoLabel;
+        private System.Windows.Forms.CheckBox DailyOnlyCheckBox;
     }
 }

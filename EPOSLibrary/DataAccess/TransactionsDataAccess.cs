@@ -11,14 +11,23 @@ namespace EPOSLibrary.DataAccess
 {
     public class TransactionsDataAccess : Connection<TransactionModel>
     {
-        public static List<TransactionModel> Load()
+        public static List<TransactionModel> Load(bool isDailyOnly = true)
         {
-            string query = "SELECT TransactionID, Date, Total /100.0 AS Total, Change /100.0 AS Change, PaymentMethod, EmployeeUsername FROM Transactions WHERE Date LIKE @Date || '%'";
+            string query = "SELECT TransactionID, Date, Total /100.0 AS Total, Change /100.0 AS Change, PaymentMethod, EmployeeUsername FROM Transactions";
 
             var parameters = new DynamicParameters();
-            parameters.Add("@Date", DateTime.Now.ToString().Substring(0, 10));
 
-            return Query(query, parameters);
+            if (isDailyOnly)
+            {
+                query += " WHERE Date LIKE @Date || '%'";
+                parameters.Add("@Date", DateTime.Now.ToString().Substring(0, 10));
+            }
+
+
+            var result = Query(query, parameters);
+            result.Reverse();
+
+            return result;
         }
 
         public static TransactionModel Save(TransactionModel transaction)

@@ -19,14 +19,24 @@ namespace EPOSWinFormsUI.Forms
         {
             InitializeComponent();
 
+            ApplyPerms();
+
             UpdateData();
 
             ShoppingCart.TotalChanged += new ShoppingCartUserControl.TotalChangedEvent(TotalChanged);
         }
 
-        private void UpdateData()
+        private void ApplyPerms()
         {
-            var transactions = TransactionsDataAccess.Load();
+            if (EPOSLibrary.LoginSystem.Session.Role.RoleID > 2)
+            {
+                DailyOnlyCheckBox.Visible = false;
+            }
+        }
+
+        private void UpdateData(bool isDailyOnly = true)
+        {
+            var transactions = TransactionsDataAccess.Load(isDailyOnly);
 
             TransactionsDataGridView.DataSource = transactions;
 
@@ -61,6 +71,22 @@ namespace EPOSWinFormsUI.Forms
 
                     ShoppingCart.Add(product, quantityToAdd: transItem.Quantity);
                 }
+            }
+        }
+
+        private void DailyOnlyCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isDaily = DailyOnlyCheckBox.Checked;
+
+            UpdateData(isDaily);
+
+            if (isDaily)
+            {
+                InfoLabel.Text = "Today's transactions are:";
+            }
+            else
+            {
+                InfoLabel.Text = "Full transaction history:";
             }
         }
     }
