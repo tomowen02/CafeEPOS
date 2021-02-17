@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +8,118 @@ namespace EPOSLibrary
 {
     public class Calculator
     {
-        // TODO - Check validity
-        // TODO - Add decimal place support
+        public delegate void ExpressionChangedEvent(object sender, ExpressionChangedEventArgs e);
+        public event ExpressionChangedEvent OnExpressionChanged;
 
-        public static List<string> ConvertToRPN(List<string> inFixExpression)
+
+        List<string> expression = new List<string>();
+
+
+        public List<string> GetExpression()
+        {
+            return expression;
+        }
+
+        public void AddDigit(string digit)
+        {
+            string lastItem = "";
+            string secondToLastItem = "";
+
+            try
+            {
+                lastItem = expression.Last();
+                secondToLastItem = expression[expression.Count - 2];
+            }
+            catch (Exception) { }
+
+            // If there is only one item and that item is a plus or minus
+            if (!secondToLastItem.IsNumeric() & (lastItem == "+" || lastItem == "-"))
+            {
+                expression[expression.Count - 1] += digit;
+            }
+            else if (lastItem.IsNumeric())
+            {
+                expression[expression.Count - 1] += digit;
+            }
+            else
+            {
+                expression.Add(digit);
+            }
+
+            SendExpressionChanged();
+        }
+
+        public void AddOperand(string operand)
+        {
+            expression.Add(operand);
+
+            SendExpressionChanged();
+        }
+
+        public void AddDecimal()
+        {
+            if (expression.Last().IsNumeric())
+            {
+                expression[expression.Count - 1] += ".";
+
+                SendExpressionChanged();
+            }
+        }
+
+        public void Del()
+        {
+            if (expression.Count > 0)
+            {
+                int lastItemIndex = expression.Count - 1;
+
+                string lastItem = expression.Last();
+                if (lastItem.Length > 1)
+                {
+                    expression[lastItemIndex] = lastItem.Remove(lastItem.Length - 1, 1);
+                }
+                else
+                {
+                    expression.RemoveAt(lastItemIndex);
+                }
+            }
+            SendExpressionChanged();
+        }
+
+        public decimal Equals()
+        {
+            List<string> RPN = ConvertToRPN();
+            decimal result = EvaluateRPN(RPN);
+
+            return result;
+        }
+
+        public void Clear()
+        {
+            expression.Clear();
+
+            SendExpressionChanged();
+        }
+
+        public void ClearWithoutVisual()
+        {
+            expression.Clear();
+        }
+
+        private void SendExpressionChanged()
+        {
+            if (OnExpressionChanged == null) return;
+            OnExpressionChanged(this, new ExpressionChangedEventArgs(expression));
+        }
+
+
+
+        private List<string> ConvertToRPN()
         {
             List<string> RPN = new List<string>();
 
             string poppedOperator;
             CustomStack<string> operators = new CustomStack<string>();
-            foreach (string current in inFixExpression)
+            foreach (string current in expression)
             {
                 if (current.IsNumeric())
                 {
@@ -61,7 +162,7 @@ namespace EPOSLibrary
                         operators.Push(current);
                     }
                 }
-            } 
+            }
             while (operators.Count > 0)
             {
                 poppedOperator = operators.Pop();
@@ -70,20 +171,20 @@ namespace EPOSLibrary
             return RPN;
         }
 
-        public static int EvaluateRPN(List<string> RPN)
+        private decimal EvaluateRPN(List<string> RPN)
         {
-            CustomStack<int> operands = new CustomStack<int>();
+            CustomStack<decimal> operands = new CustomStack<decimal>();
 
             foreach (string current in RPN)
             {
                 if (current.IsNumeric())
                 {
-                    operands.Push(Int32.Parse(current));
+                    operands.Push(decimal.Parse(current));
                 }
                 else
                 {
-                    int op2 = operands.Pop();
-                    int op1 = operands.Pop();
+                    decimal op2 = operands.Pop();
+                    decimal op1 = operands.Pop();
 
                     if (current == "-")
                     {
@@ -103,14 +204,14 @@ namespace EPOSLibrary
                     }
                     else if (current == "^")
                     {
-                        operands.Push((int)Math.Pow(op1, op2));
+                        operands.Push((decimal)Math.Pow((double)op1, (double)op2));
                     }
                 }
             }
             return operands.Pop();
         }
 
-        private static bool IsPrecedenceGreaterOrEqualTo(string firstOperator, string secondOperator)
+        private bool IsPrecedenceGreaterOrEqualTo(string firstOperator, string secondOperator)
         {
             Dictionary<string, int> precedence = new Dictionary<string, int>() {
                 { "(", 0},
@@ -120,6 +221,17 @@ namespace EPOSLibrary
             };
 
             return precedence[firstOperator] >= precedence[secondOperator];
+        }
+    }
+
+
+    public class ExpressionChangedEventArgs
+    {
+        public List<string> Expression { get; private set; }
+
+        public ExpressionChangedEventArgs(List<string> expression) 
+        {
+            Expression = expression;
         }
     }
 }

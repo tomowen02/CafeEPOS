@@ -53,7 +53,7 @@ namespace EPOSLibrary
 
         public static bool IsNumeric(this string value)
         {
-            bool result = Int32.TryParse(value, out int x);
+            bool result = decimal.TryParse(value, out decimal x);
             return result;
         }
     }
