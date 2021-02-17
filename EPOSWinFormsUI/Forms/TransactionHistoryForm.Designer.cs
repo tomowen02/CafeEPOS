@@ -35,6 +35,7 @@ namespace EPOSWinFormsUI.Forms
             this.ShoppingCart = new EPOSWinFormsUI.UserControls.ShoppingCartUserControl();
             this.TotalLabel = new System.Windows.Forms.Label();
             this.TotalTextbox = new System.Windows.Forms.TextBox();
+            this.InfoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,12 +120,22 @@ namespace EPOSWinFormsUI.Forms
             this.TotalTextbox.TabIndex = 47;
             this.TotalTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // InfoLabel
+            // 
+            this.InfoLabel.AutoSize = true;
+            this.InfoLabel.Location = new System.Drawing.Point(12, 35);
+            this.InfoLabel.Name = "InfoLabel";
+            this.InfoLabel.Size = new System.Drawing.Size(178, 21);
+            this.InfoLabel.TabIndex = 49;
+            this.InfoLabel.Text = "Today\'s transactions are:";
+            // 
             // TransactionHistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1014, 611);
+            this.Controls.Add(this.InfoLabel);
             this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.TotalTextbox);
             this.Controls.Add(this.ShoppingCart);
@@ -150,5 +161,6 @@ namespace EPOSWinFormsUI.Forms
         private UserControls.ShoppingCartUserControl ShoppingCart;
         private System.Windows.Forms.Label TotalLabel;
         private System.Windows.Forms.TextBox TotalTextbox;
+        private System.Windows.Forms.Label InfoLabel;
     }
 }

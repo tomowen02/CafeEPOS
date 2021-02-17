@@ -325,7 +325,7 @@ namespace EPOSWinFormsUI
 
                 TransactionModel transaction = new TransactionModel
                 {
-                    Date = DateTime.Now,
+                    Date = DateTime.Now.ToString(),
                     Total = Total,
                     Change = e.Change,
                     PaymentMethod = e.PaymentType,

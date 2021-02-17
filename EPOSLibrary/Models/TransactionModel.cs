@@ -9,7 +9,7 @@ namespace EPOSLibrary.Models
     public class TransactionModel
     {
         public int TransactionID { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public decimal Total { get; set; }
         public decimal Change { get; set; }
         public string PaymentMethod { get; set; }
