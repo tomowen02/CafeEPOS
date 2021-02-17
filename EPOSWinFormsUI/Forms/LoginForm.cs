@@ -19,6 +19,8 @@ namespace EPOSWinFormsUI.Forms
         public LoginForm()
         {
             InitializeComponent();
+
+            UsernameTextBox.Select();
         }
 
         private void SignInButton_Click(object sender, EventArgs e)
