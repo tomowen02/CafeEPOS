@@ -42,6 +42,7 @@
             this.ShowStockManagementSubButton = new System.Windows.Forms.Button();
             this.OpenTillButton = new System.Windows.Forms.Button();
             this.SessionPanel = new System.Windows.Forms.Panel();
+            this.ShowUserOptionsButton = new System.Windows.Forms.Button();
             this.EmployeeNameLabel = new System.Windows.Forms.Label();
             this.EmployeeIconPictureBox = new System.Windows.Forms.PictureBox();
             this.UnderSideLogoPanel = new System.Windows.Forms.Panel();
@@ -49,8 +50,7 @@
             this.ChildFormPanel = new System.Windows.Forms.Panel();
             this.MainLogoPicture = new System.Windows.Forms.PictureBox();
             this.LogOutContextButton = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ShowUserOptionsButton = new System.Windows.Forms.Button();
+            this.LogOutStripButton = new System.Windows.Forms.ToolStripMenuItem();
             this.SideBarPanel.SuspendLayout();
             this.SideBarNavPanel.SuspendLayout();
             this.StockManagementSubPanel.SuspendLayout();
@@ -250,6 +250,18 @@
             this.SessionPanel.Size = new System.Drawing.Size(270, 65);
             this.SessionPanel.TabIndex = 13;
             // 
+            // ShowUserOptionsButton
+            // 
+            this.ShowUserOptionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowUserOptionsButton.ForeColor = System.Drawing.Color.White;
+            this.ShowUserOptionsButton.Location = new System.Drawing.Point(214, 17);
+            this.ShowUserOptionsButton.Name = "ShowUserOptionsButton";
+            this.ShowUserOptionsButton.Size = new System.Drawing.Size(39, 31);
+            this.ShowUserOptionsButton.TabIndex = 2;
+            this.ShowUserOptionsButton.Text = "☰";
+            this.ShowUserOptionsButton.UseVisualStyleBackColor = true;
+            this.ShowUserOptionsButton.Click += new System.EventHandler(this.ShowUserOptionsButton_Click);
+            // 
             // EmployeeNameLabel
             // 
             this.EmployeeNameLabel.AutoSize = true;
@@ -317,28 +329,16 @@
             // LogOutContextButton
             // 
             this.LogOutContextButton.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logOutToolStripMenuItem});
+            this.LogOutStripButton});
             this.LogOutContextButton.Name = "LogOutContextButton";
-            this.LogOutContextButton.Size = new System.Drawing.Size(116, 26);
+            this.LogOutContextButton.Size = new System.Drawing.Size(181, 48);
             // 
-            // logOutToolStripMenuItem
+            // LogOutStripButton
             // 
-            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.logOutToolStripMenuItem.Text = "Log out";
-            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
-            // 
-            // ShowUserOptionsButton
-            // 
-            this.ShowUserOptionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowUserOptionsButton.ForeColor = System.Drawing.Color.White;
-            this.ShowUserOptionsButton.Location = new System.Drawing.Point(214, 17);
-            this.ShowUserOptionsButton.Name = "ShowUserOptionsButton";
-            this.ShowUserOptionsButton.Size = new System.Drawing.Size(39, 31);
-            this.ShowUserOptionsButton.TabIndex = 2;
-            this.ShowUserOptionsButton.Text = "☰";
-            this.ShowUserOptionsButton.UseVisualStyleBackColor = true;
-            this.ShowUserOptionsButton.Click += new System.EventHandler(this.ShowUserOptionsButton_Click);
+            this.LogOutStripButton.Name = "LogOutStripButton";
+            this.LogOutStripButton.Size = new System.Drawing.Size(180, 22);
+            this.LogOutStripButton.Text = "Log out";
+            this.LogOutStripButton.Click += new System.EventHandler(this.LogOutStripButton_Click);
             // 
             // MainWindowForm
             // 
@@ -388,7 +388,7 @@
         private System.Windows.Forms.PictureBox EmployeeIconPictureBox;
         private System.Windows.Forms.Button AdminControlsButton;
         private System.Windows.Forms.ContextMenuStrip LogOutContextButton;
-        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LogOutStripButton;
         private System.Windows.Forms.Button ShowUserOptionsButton;
     }
 }

@@ -16,8 +16,9 @@ namespace EPOSWinFormsUI.Forms
     // TODO - visable vs hide?
     public partial class MainWindowForm : Form
     {
-        private LoginForm _loginForm;
-        private bool _safeLogout = false;
+        private LoginForm loginForm;
+        private bool safeLogout = false;
+        private Form activeForm = null;
 
         public MainWindowForm()
         {
@@ -25,12 +26,12 @@ namespace EPOSWinFormsUI.Forms
             HideSubmenus();
         }
 
-        public MainWindowForm(LoginForm login)
+        public MainWindowForm(LoginForm loginForm)
         {
             InitializeComponent();
             HideSubmenus();
 
-            _loginForm = login;
+            this.loginForm = loginForm;
 
             ApplyPermRestrictions();
 
@@ -62,7 +63,7 @@ namespace EPOSWinFormsUI.Forms
             }
         }
 
-        private Form activeForm = null;
+        
         private void OpenChildForm(Form newForm)
         {
             if (activeForm != null)
@@ -91,7 +92,7 @@ namespace EPOSWinFormsUI.Forms
 
             if (Session.Role.RoleID > 2)
             {
-                // The employee is lower on the perissions hierarchy than a manager
+                // The employee is lower on the permissions hierarchy than a manager
                 ShowStockManagementSubButton.Visible = false;
                 StatsButton.Visible = false;
 
@@ -139,19 +140,19 @@ namespace EPOSWinFormsUI.Forms
 
         private void MainWindowForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_loginForm != null & _safeLogout == false)
+            if (loginForm != null & safeLogout == false)
             {
-                _loginForm.Close();
+                loginForm.Close();
             }
         }
 
-        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LogOutStripButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Logging out");
 
-            _safeLogout = true;
+            safeLogout = true;
             this.Hide();
-            _loginForm.Show();
+            loginForm.Show();
             this.Close();
         }
 

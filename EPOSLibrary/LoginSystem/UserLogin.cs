@@ -10,7 +10,7 @@ namespace EPOSLibrary.LoginSystem
 {
     public static class UserLogin
     {
-        public static bool ValidateUserCreds(string username, string password)
+        public static bool AuthenticateUserCreds(string username, string password)
         {
             EmployeeModel user = EmployeeDataAccess.Load(username); // Load the user profile to see if the user exists
 

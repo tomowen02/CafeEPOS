@@ -37,12 +37,13 @@ namespace EPOSWinFormsUI.Forms
             {
                 EmployeeModel user = EmployeeDataAccess.Load(username); // Load the user profile to see if the user exists
 
-                if (UserLogin.ValidateUserCreds(username, password))
+                if (UserLogin.AuthenticateUserCreds(username, password)) // The AuthenticateUserCreds method returns true if the credentials are correct
                 {
                     // The login credentials are correct
 
                     Session.Employee = user;
 
+                    // Open this main window, hide this login screen, and reset the login screen so that it's ready for use if a user logs out
                     Form mainWindow = new MainWindowForm(this);
                     mainWindow.Show();
                     ResetForm();
