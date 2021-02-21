@@ -29,22 +29,13 @@
         private void InitializeComponent()
         {
             this.CloseFormButton = new System.Windows.Forms.Button();
-            this.TillTabControl = new MetroFramework.Controls.MetroTabControl();
-            this.search = new MetroFramework.Controls.MetroTabPage();
-            this.FilterByTypeCheckBox = new System.Windows.Forms.CheckBox();
-            this.ProductTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SearchProductsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.SearchTextBox = new System.Windows.Forms.TextBox();
-            this.SearchLabel = new System.Windows.Forms.Label();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.CancelTransactionButton = new System.Windows.Forms.Button();
             this.PayButton = new System.Windows.Forms.Button();
             this.TotalTextbox = new System.Windows.Forms.TextBox();
             this.TotalLabel = new System.Windows.Forms.Label();
             this.ShoppingCart = new EPOSWinFormsUI.UserControls.ShoppingCartUserControl();
-            this.TillTabControl.SuspendLayout();
-            this.search.SuspendLayout();
+            this.ProductsTabs = new EPOSWinFormsUI.UserControls.ProductsTabsUserControl();
             this.SuspendLayout();
             // 
             // CloseFormButton
@@ -59,104 +50,6 @@
             this.CloseFormButton.Text = "X";
             this.CloseFormButton.UseVisualStyleBackColor = true;
             this.CloseFormButton.Click += new System.EventHandler(this.CloseFormButton_Click);
-            // 
-            // TillTabControl
-            // 
-            this.TillTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TillTabControl.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.TillTabControl.Controls.Add(this.search);
-            this.TillTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
-            this.TillTabControl.Location = new System.Drawing.Point(12, 24);
-            this.TillTabControl.Name = "TillTabControl";
-            this.TillTabControl.SelectedIndex = 0;
-            this.TillTabControl.Size = new System.Drawing.Size(644, 575);
-            this.TillTabControl.TabIndex = 3;
-            this.TillTabControl.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.TillTabControl.UseSelectable = true;
-            // 
-            // search
-            // 
-            this.search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.search.Controls.Add(this.FilterByTypeCheckBox);
-            this.search.Controls.Add(this.ProductTypeComboBox);
-            this.search.Controls.Add(this.label1);
-            this.search.Controls.Add(this.SearchProductsFlowPanel);
-            this.search.Controls.Add(this.SearchTextBox);
-            this.search.Controls.Add(this.SearchLabel);
-            this.search.HorizontalScrollbarBarColor = true;
-            this.search.HorizontalScrollbarHighlightOnWheel = false;
-            this.search.HorizontalScrollbarSize = 1;
-            this.search.Location = new System.Drawing.Point(4, 41);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(636, 530);
-            this.search.TabIndex = 0;
-            this.search.Text = "All items/ search";
-            this.search.VerticalScrollbarBarColor = true;
-            this.search.VerticalScrollbarHighlightOnWheel = false;
-            this.search.VerticalScrollbarSize = 1;
-            // 
-            // FilterByTypeCheckBox
-            // 
-            this.FilterByTypeCheckBox.AutoSize = true;
-            this.FilterByTypeCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FilterByTypeCheckBox.Location = new System.Drawing.Point(449, 26);
-            this.FilterByTypeCheckBox.Name = "FilterByTypeCheckBox";
-            this.FilterByTypeCheckBox.Size = new System.Drawing.Size(12, 11);
-            this.FilterByTypeCheckBox.TabIndex = 7;
-            this.FilterByTypeCheckBox.UseVisualStyleBackColor = true;
-            this.FilterByTypeCheckBox.CheckedChanged += new System.EventHandler(this.FilterByTypeCheckBox_Changed);
-            // 
-            // ProductTypeComboBox
-            // 
-            this.ProductTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ProductTypeComboBox.FormattingEnabled = true;
-            this.ProductTypeComboBox.Location = new System.Drawing.Point(468, 16);
-            this.ProductTypeComboBox.Name = "ProductTypeComboBox";
-            this.ProductTypeComboBox.Size = new System.Drawing.Size(163, 29);
-            this.ProductTypeComboBox.TabIndex = 6;
-            this.ProductTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ProductTypeComboBox_Changed);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(342, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 21);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Product type:";
-            // 
-            // SearchProductsFlowPanel
-            // 
-            this.SearchProductsFlowPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchProductsFlowPanel.AutoScroll = true;
-            this.SearchProductsFlowPanel.BackColor = System.Drawing.Color.Transparent;
-            this.SearchProductsFlowPanel.Location = new System.Drawing.Point(0, 63);
-            this.SearchProductsFlowPanel.Name = "SearchProductsFlowPanel";
-            this.SearchProductsFlowPanel.Size = new System.Drawing.Size(634, 465);
-            this.SearchProductsFlowPanel.TabIndex = 4;
-            // 
-            // SearchTextBox
-            // 
-            this.SearchTextBox.Location = new System.Drawing.Point(69, 16);
-            this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(197, 29);
-            this.SearchTextBox.TabIndex = 3;
-            this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchBox_Changed);
-            // 
-            // SearchLabel
-            // 
-            this.SearchLabel.AutoSize = true;
-            this.SearchLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SearchLabel.Location = new System.Drawing.Point(3, 19);
-            this.SearchLabel.Name = "SearchLabel";
-            this.SearchLabel.Size = new System.Drawing.Size(60, 21);
-            this.SearchLabel.TabIndex = 2;
-            this.SearchLabel.Text = "Search:";
             // 
             // RemoveButton
             // 
@@ -234,28 +127,37 @@
             0,
             0});
             // 
+            // ProductsTabs
+            // 
+            this.ProductsTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProductsTabs.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ProductsTabs.Location = new System.Drawing.Point(24, 14);
+            this.ProductsTabs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ProductsTabs.Name = "ProductsTabs";
+            this.ProductsTabs.Size = new System.Drawing.Size(634, 580);
+            this.ProductsTabs.TabIndex = 10;
+            // 
             // TillForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1014, 611);
+            this.Controls.Add(this.ProductsTabs);
             this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.TotalTextbox);
             this.Controls.Add(this.PayButton);
             this.Controls.Add(this.CancelTransactionButton);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.ShoppingCart);
-            this.Controls.Add(this.TillTabControl);
             this.Controls.Add(this.CloseFormButton);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TillForm";
             this.Text = "Till";
-            this.TillTabControl.ResumeLayout(false);
-            this.search.ResumeLayout(false);
-            this.search.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,19 +166,12 @@
         #endregion
 
         private System.Windows.Forms.Button CloseFormButton;
-        private MetroFramework.Controls.MetroTabControl TillTabControl;
-        private MetroFramework.Controls.MetroTabPage search;
-        private System.Windows.Forms.FlowLayoutPanel SearchProductsFlowPanel;
-        private System.Windows.Forms.TextBox SearchTextBox;
-        private System.Windows.Forms.Label SearchLabel;
-        private System.Windows.Forms.ComboBox ProductTypeComboBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox FilterByTypeCheckBox;
         private UserControls.ShoppingCartUserControl ShoppingCart;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button CancelTransactionButton;
         private System.Windows.Forms.Button PayButton;
         private System.Windows.Forms.TextBox TotalTextbox;
         private System.Windows.Forms.Label TotalLabel;
+        private UserControls.ProductsTabsUserControl ProductsTabs;
     }
 }

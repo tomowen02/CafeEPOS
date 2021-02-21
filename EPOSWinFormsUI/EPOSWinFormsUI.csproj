@@ -177,6 +177,12 @@
     <Compile Include="Forms\TillForm.Designer.cs">
       <DependentUpon>TillForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ProductsTabsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ProductsTabsUserControl.Designer.cs">
+      <DependentUpon>ProductsTabsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ShoppingCartUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     </Content>
     <EmbeddedResource Include="Forms\TillForm.resx">
       <DependentUpon>TillForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ProductsTabsUserControl.resx">
+      <DependentUpon>ProductsTabsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ShoppingCartUserControl.resx">
       <DependentUpon>ShoppingCartUserControl.cs</DependentUpon>
