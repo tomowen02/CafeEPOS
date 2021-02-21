@@ -73,7 +73,7 @@
             this.SideBarPanel.Location = new System.Drawing.Point(0, 0);
             this.SideBarPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SideBarPanel.Name = "SideBarPanel";
-            this.SideBarPanel.Size = new System.Drawing.Size(270, 611);
+            this.SideBarPanel.Size = new System.Drawing.Size(252, 611);
             this.SideBarPanel.TabIndex = 1;
             // 
             // SideBarNavPanel
@@ -89,7 +89,7 @@
             this.SideBarNavPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SideBarNavPanel.Location = new System.Drawing.Point(0, 201);
             this.SideBarNavPanel.Name = "SideBarNavPanel";
-            this.SideBarNavPanel.Size = new System.Drawing.Size(270, 345);
+            this.SideBarNavPanel.Size = new System.Drawing.Size(252, 345);
             this.SideBarNavPanel.TabIndex = 7;
             // 
             // AdminControlsButton
@@ -102,7 +102,7 @@
             this.AdminControlsButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AdminControlsButton.Name = "AdminControlsButton";
             this.AdminControlsButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.AdminControlsButton.Size = new System.Drawing.Size(253, 46);
+            this.AdminControlsButton.Size = new System.Drawing.Size(235, 46);
             this.AdminControlsButton.TabIndex = 13;
             this.AdminControlsButton.Text = "Admin Controls";
             this.AdminControlsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -118,7 +118,7 @@
             this.CalculatorButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CalculatorButton.Name = "CalculatorButton";
             this.CalculatorButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.CalculatorButton.Size = new System.Drawing.Size(253, 46);
+            this.CalculatorButton.Size = new System.Drawing.Size(235, 46);
             this.CalculatorButton.TabIndex = 12;
             this.CalculatorButton.Text = "Calculator";
             this.CalculatorButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -135,7 +135,7 @@
             this.StatsButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StatsButton.Name = "StatsButton";
             this.StatsButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.StatsButton.Size = new System.Drawing.Size(253, 46);
+            this.StatsButton.Size = new System.Drawing.Size(235, 46);
             this.StatsButton.TabIndex = 11;
             this.StatsButton.Text = "Statistics";
             this.StatsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -152,7 +152,7 @@
             this.TransactionHistoryButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TransactionHistoryButton.Name = "TransactionHistoryButton";
             this.TransactionHistoryButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.TransactionHistoryButton.Size = new System.Drawing.Size(253, 46);
+            this.TransactionHistoryButton.Size = new System.Drawing.Size(235, 46);
             this.TransactionHistoryButton.TabIndex = 10;
             this.TransactionHistoryButton.Text = "Transaction History";
             this.TransactionHistoryButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -168,7 +168,7 @@
             this.StockManagementSubPanel.Location = new System.Drawing.Point(0, 92);
             this.StockManagementSubPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.StockManagementSubPanel.Name = "StockManagementSubPanel";
-            this.StockManagementSubPanel.Size = new System.Drawing.Size(253, 95);
+            this.StockManagementSubPanel.Size = new System.Drawing.Size(235, 95);
             this.StockManagementSubPanel.TabIndex = 7;
             // 
             // ManageProductTypesButton
@@ -181,7 +181,7 @@
             this.ManageProductTypesButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ManageProductTypesButton.Name = "ManageProductTypesButton";
             this.ManageProductTypesButton.Padding = new System.Windows.Forms.Padding(29, 0, 0, 0);
-            this.ManageProductTypesButton.Size = new System.Drawing.Size(253, 46);
+            this.ManageProductTypesButton.Size = new System.Drawing.Size(235, 46);
             this.ManageProductTypesButton.TabIndex = 5;
             this.ManageProductTypesButton.Text = "Manage Product Types";
             this.ManageProductTypesButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -198,7 +198,7 @@
             this.ManageProductsButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ManageProductsButton.Name = "ManageProductsButton";
             this.ManageProductsButton.Padding = new System.Windows.Forms.Padding(29, 0, 0, 0);
-            this.ManageProductsButton.Size = new System.Drawing.Size(253, 46);
+            this.ManageProductsButton.Size = new System.Drawing.Size(235, 46);
             this.ManageProductsButton.TabIndex = 4;
             this.ManageProductsButton.Text = "Manage products";
             this.ManageProductsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -215,7 +215,7 @@
             this.ShowStockManagementSubButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ShowStockManagementSubButton.Name = "ShowStockManagementSubButton";
             this.ShowStockManagementSubButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.ShowStockManagementSubButton.Size = new System.Drawing.Size(253, 46);
+            this.ShowStockManagementSubButton.Size = new System.Drawing.Size(235, 46);
             this.ShowStockManagementSubButton.TabIndex = 9;
             this.ShowStockManagementSubButton.Text = "Stock Management";
             this.ShowStockManagementSubButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,7 +232,7 @@
             this.OpenTillButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.OpenTillButton.Name = "OpenTillButton";
             this.OpenTillButton.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.OpenTillButton.Size = new System.Drawing.Size(253, 46);
+            this.OpenTillButton.Size = new System.Drawing.Size(235, 46);
             this.OpenTillButton.TabIndex = 8;
             this.OpenTillButton.Text = "Open Till";
             this.OpenTillButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -247,14 +247,15 @@
             this.SessionPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.SessionPanel.Location = new System.Drawing.Point(0, 546);
             this.SessionPanel.Name = "SessionPanel";
-            this.SessionPanel.Size = new System.Drawing.Size(270, 65);
+            this.SessionPanel.Size = new System.Drawing.Size(252, 65);
             this.SessionPanel.TabIndex = 13;
             // 
             // ShowUserOptionsButton
             // 
+            this.ShowUserOptionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowUserOptionsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowUserOptionsButton.ForeColor = System.Drawing.Color.White;
-            this.ShowUserOptionsButton.Location = new System.Drawing.Point(214, 17);
+            this.ShowUserOptionsButton.Location = new System.Drawing.Point(207, 17);
             this.ShowUserOptionsButton.Name = "ShowUserOptionsButton";
             this.ShowUserOptionsButton.Size = new System.Drawing.Size(39, 31);
             this.ShowUserOptionsButton.TabIndex = 2;
@@ -264,6 +265,7 @@
             // 
             // EmployeeNameLabel
             // 
+            this.EmployeeNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EmployeeNameLabel.AutoSize = true;
             this.EmployeeNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmployeeNameLabel.ForeColor = System.Drawing.Color.White;
@@ -275,6 +277,7 @@
             // 
             // EmployeeIconPictureBox
             // 
+            this.EmployeeIconPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EmployeeIconPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("EmployeeIconPictureBox.Image")));
             this.EmployeeIconPictureBox.Location = new System.Drawing.Point(12, 15);
             this.EmployeeIconPictureBox.Name = "EmployeeIconPictureBox";
@@ -289,7 +292,7 @@
             this.UnderSideLogoPanel.Location = new System.Drawing.Point(0, 143);
             this.UnderSideLogoPanel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UnderSideLogoPanel.Name = "UnderSideLogoPanel";
-            this.UnderSideLogoPanel.Size = new System.Drawing.Size(270, 58);
+            this.UnderSideLogoPanel.Size = new System.Drawing.Size(252, 58);
             this.UnderSideLogoPanel.TabIndex = 3;
             // 
             // SideLogoPicture
@@ -299,7 +302,7 @@
             this.SideLogoPicture.Location = new System.Drawing.Point(0, 0);
             this.SideLogoPicture.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SideLogoPicture.Name = "SideLogoPicture";
-            this.SideLogoPicture.Size = new System.Drawing.Size(270, 143);
+            this.SideLogoPicture.Size = new System.Drawing.Size(252, 143);
             this.SideLogoPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SideLogoPicture.TabIndex = 3;
             this.SideLogoPicture.TabStop = false;
@@ -309,16 +312,16 @@
             this.ChildFormPanel.BackColor = System.Drawing.Color.Transparent;
             this.ChildFormPanel.Controls.Add(this.MainLogoPicture);
             this.ChildFormPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChildFormPanel.Location = new System.Drawing.Point(270, 0);
+            this.ChildFormPanel.Location = new System.Drawing.Point(252, 0);
             this.ChildFormPanel.Name = "ChildFormPanel";
-            this.ChildFormPanel.Size = new System.Drawing.Size(1014, 611);
+            this.ChildFormPanel.Size = new System.Drawing.Size(1032, 611);
             this.ChildFormPanel.TabIndex = 1;
             // 
             // MainLogoPicture
             // 
             this.MainLogoPicture.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MainLogoPicture.Image = ((System.Drawing.Image)(resources.GetObject("MainLogoPicture.Image")));
-            this.MainLogoPicture.Location = new System.Drawing.Point(369, 167);
+            this.MainLogoPicture.Location = new System.Drawing.Point(378, 167);
             this.MainLogoPicture.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MainLogoPicture.Name = "MainLogoPicture";
             this.MainLogoPicture.Size = new System.Drawing.Size(277, 277);
@@ -331,12 +334,12 @@
             this.LogOutContextButton.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LogOutStripButton});
             this.LogOutContextButton.Name = "LogOutContextButton";
-            this.LogOutContextButton.Size = new System.Drawing.Size(181, 48);
+            this.LogOutContextButton.Size = new System.Drawing.Size(116, 26);
             // 
             // LogOutStripButton
             // 
             this.LogOutStripButton.Name = "LogOutStripButton";
-            this.LogOutStripButton.Size = new System.Drawing.Size(180, 22);
+            this.LogOutStripButton.Size = new System.Drawing.Size(115, 22);
             this.LogOutStripButton.Text = "Log out";
             this.LogOutStripButton.Click += new System.EventHandler(this.LogOutStripButton_Click);
             // 
