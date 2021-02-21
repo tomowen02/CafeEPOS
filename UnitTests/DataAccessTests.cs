@@ -2,6 +2,7 @@
 using System;
 using EPOSLibrary;
 using System.Diagnostics;
+using EPOSLibrary.LoginSystem;
 
 namespace UnitTests
 {
@@ -11,7 +12,7 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod1()
         {
-            Trace.WriteLine(Hashing.NewHash("hellothere", "1234"));
+            //Trace.WriteLine(Hashing.NewHash("hellothere", "1234"));
         }
     }
 }
