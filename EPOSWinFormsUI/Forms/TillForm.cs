@@ -70,8 +70,11 @@ namespace EPOSWinFormsUI
 
         private void PayButton_Click(object sender, EventArgs e)
         {
+            // Only open the payment dialog if the cart has items in it
             if (!ShoppingCart.IsEmpty())
             {
+                // Open the payment window and start listening for the PaymentMade event
+
                 Forms.PaymentForm paymentForm = new Forms.PaymentForm
                 {
                     PaymentDue = Total
@@ -90,6 +93,7 @@ namespace EPOSWinFormsUI
 
                 // TODO - Use SQL transaction processing or a more advanced query
 
+                // Create a transaction object with the details of this transaction
                 TransactionModel transaction = new TransactionModel
                 {
                     Date = DateTime.Now.ToString(),
@@ -98,9 +102,11 @@ namespace EPOSWinFormsUI
                     PaymentMethod = e.PaymentType,
                     EmployeeUsername = EPOSLibrary.LoginSystem.Session.Employee.EmployeeUsername
                 };
+                // Save the transaction and retrieve the TransactionID
                 transaction = TransactionsDataAccess.Save(transaction);
 
 
+                // Create a new TransactionItem object for each of the items in the shopping cart
                 foreach (CartItemModel cartItem in ShoppingCart.GetCartItems())
                 {
                     TransactionItemModel transactionItem = new TransactionItemModel
