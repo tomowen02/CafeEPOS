@@ -70,7 +70,6 @@ namespace EPOSWinFormsUI
 
         private void PayButton_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Not completed development!");
             if (!ShoppingCart.IsEmpty())
             {
                 Forms.PaymentForm paymentForm = new Forms.PaymentForm
