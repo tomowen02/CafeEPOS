@@ -41,7 +41,7 @@ namespace EPOSLibrary
                 // Else there are no more characters after the leading marker
                 else
                 {
-                    string newSubString = str.Substring(followMarker, leadingMarker+1 - followMarker); // TODO - SHOULD HAVE A +1 AT THE END!!!
+                    string newSubString = str.Substring(followMarker, leadingMarker+1 - followMarker);
                     chunksList.Add(newSubString);
                     chunkAdded = true;
                 }

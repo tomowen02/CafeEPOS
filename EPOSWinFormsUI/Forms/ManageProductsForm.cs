@@ -14,8 +14,6 @@ namespace EPOSWinFormsUI.Forms
 {
     public partial class ManageProductsForm : Form
     {
-        // TODO - Fix price filter
-        // TODO - Create product type management
 
         bool isFormLoaded = false;
 

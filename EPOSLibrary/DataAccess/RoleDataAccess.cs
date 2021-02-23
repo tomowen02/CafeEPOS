@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace EPOSLibrary.DataAccess
 {
-    // TODO - do role data access
-
     public class RoleDataAccess : Connection<RoleModel>
     {
         public static string Load(int roleID)
