@@ -14,6 +14,7 @@ namespace EPOSWinFormsUI.Forms
 {
     public partial class ManageProductsForm : Form
     {
+        // TODO - use product type name instead of the ID
 
         bool isFormLoaded = false;
 
@@ -47,6 +48,12 @@ namespace EPOSWinFormsUI.Forms
         {
             if (isFormLoaded)
             {
+                // Each filter type needs to be checked to see if they have a value,
+                // and that they are enabled.
+                // If their checkbox is not ticked, then the filter value will be
+                // assigned a default value
+
+
                 string nameFilter = NameFilterTextBox.Text;
                 if (!ProductNameCheckBox.Checked)
                 {
@@ -66,14 +73,8 @@ namespace EPOSWinFormsUI.Forms
                 }
                 else
                 {
-                    try
-                    {
-                        minPrice = Decimal.Parse(MinPriceFilterTextBox.Text);
-                    }
-                    catch (Exception)
-                    {
-                        minPrice = -1M;
-                    }
+                    try { minPrice = Decimal.Parse(MinPriceFilterTextBox.Text); }
+                    catch (Exception) { minPrice = -1M; }
                 }
                 decimal maxPrice;
                 if (MaxPriceFilterTextBox.Text == "" | !PriceCheckBox.Checked)
@@ -82,21 +83,18 @@ namespace EPOSWinFormsUI.Forms
                 }
                 else
                 {
-                    try
-                    {
-                        maxPrice = Decimal.Parse(MaxPriceFilterTextBox.Text);
-                    }
-                    catch (Exception)
-                    {
-                        maxPrice = -1M;
-                    }
+                    try { maxPrice = Decimal.Parse(MaxPriceFilterTextBox.Text); }
+                    catch (Exception) { maxPrice = -1M; }
                 }
 
+
+                // We now need to retrieve the products, and pass in the filter values
                 List<ProductModel> products = ProductsDataAccess.Load(nameFilter, productTypeID, minPrice, maxPrice);
                 ShowProducts(products);
             }
             
         }
+
         private void ClearFilters()
         {
             NameFilterTextBox.Text = "";
@@ -109,28 +107,40 @@ namespace EPOSWinFormsUI.Forms
             PriceCheckBox.Checked = false;
         }
 
-        #region Filter controls Click events
+        #region Filter controls changed events
         private void NameFilterTextBox_TextChanged(object sender, EventArgs e)
         {
-            Filter();
-            ProductNameCheckBox.Checked = true;
+            if (ProductNameCheckBox.Checked)
+            {
+                Filter();
+            }
+            ProductNameCheckBox.Checked = true; // This will then trigger another event
         }
 
         private void ProductTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Filter();
+            if (ProductTypeCheckBox.Checked)
+            {
+                Filter();
+            }
             ProductTypeCheckBox.Checked = true;
         }
 
         private void MinPriceFilterTextBox_TextChanged(object sender, EventArgs e)
         {
-            Filter();
+            if (PriceCheckBox.Checked)
+            {
+                Filter();
+            }
             PriceCheckBox.Checked = true;
         }
 
         private void MaxPriceFilterTextBox_TextChanged(object sender, EventArgs e)
         {
-            Filter();
+            if (PriceCheckBox.Checked)
+            {
+                Filter();
+            }
             PriceCheckBox.Checked = true;
         }
 
@@ -163,9 +173,10 @@ namespace EPOSWinFormsUI.Forms
         private void NewProductButton_Click(object sender, EventArgs e)
         {
             EditProductInfoForm editProductInfoForm = new EditProductInfoForm();
-            editProductInfoForm.ProductGenerated += new EditProductInfoForm.ProductGeneratedEvent(NewOrEditedProduct);
             editProductInfoForm.StartPosition = FormStartPosition.CenterParent;
 
+            editProductInfoForm.ProductGenerated += new EditProductInfoForm.ProductGeneratedEvent(NewOrEditedProduct);
+            
             try
             {
                 editProductInfoForm.ShowDialog();
@@ -179,9 +190,7 @@ namespace EPOSWinFormsUI.Forms
 
         private void EditProductButton_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(ProductsDataGridView.SelectedRows[0].Cells["ProductID"].Value.ToString());
-            ProductModel product = ProductsDataAccess.LoadSingle(id);
-
+            ProductModel product = GetSelectedProduct();
 
             EditProductInfoForm editProductInfoForm = new EditProductInfoForm(product);
             editProductInfoForm.ProductGenerated += new EditProductInfoForm.ProductGeneratedEvent(NewOrEditedProduct);
