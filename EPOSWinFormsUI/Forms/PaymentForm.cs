@@ -27,7 +27,7 @@ namespace EPOSWinFormsUI.Forms
             }
         }
 
-        private decimal Change;
+        private decimal change;
 
         public PaymentForm()
         {
@@ -42,18 +42,11 @@ namespace EPOSWinFormsUI.Forms
             {
                 decimal amountGiven = Decimal.Parse(AmountGivenTextbox.Text);
 
-                if (amountGiven > 0)
-                {
-                    total = PaymentDue - amountGiven;
-                }
-                else
-                {
-                    throw new Exception("Negative number was given");
-                }
+                if (amountGiven > 0) { total = PaymentDue - amountGiven; }
+                else { throw new Exception("Negative number was given"); }
             }
             catch
             {
-
                 MessageBox.Show("Invalid amount given");
                 return;
             }
@@ -65,12 +58,12 @@ namespace EPOSWinFormsUI.Forms
             }
             else
             {
-                // The use has pay the correct amount
+                // The use has paid the correct amount
 
-                Change = -total;
-                MessageBox.Show("Change due: " + (Change).ToString("C2"));
+                change = -total;
+                MessageBox.Show("Change due: " + (change).ToString("C2"));
 
-                PaymentMade(this, new PaymentEventArgs() { Success = true, Change = Change, PaymentType = paymentType });
+                PaymentMade(this, new PaymentEventArgs() { Success = true, Change = change, PaymentType = paymentType });
                 this.Close();
             }
         }
