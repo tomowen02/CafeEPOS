@@ -155,14 +155,6 @@ namespace EPOSWinFormsUI.Forms
         }
         #endregion
 
-        private void SortByComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (SortByComboBox.SelectedItem.ToString() == "A --> Z")
-            {
-
-            }
-        }
-
         private ProductModel GetSelectedProduct()
         {
             return (ProductModel)ProductsDataGridView.SelectedRows[0].DataBoundItem;

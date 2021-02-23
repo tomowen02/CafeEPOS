@@ -39,8 +39,6 @@
             this.MinPriceFilterTextBox = new System.Windows.Forms.TextBox();
             this.PriceToFilterLabel = new System.Windows.Forms.Label();
             this.MaxPriceFilterTextBox = new System.Windows.Forms.TextBox();
-            this.SortByComboBox = new System.Windows.Forms.ComboBox();
-            this.SortByLabel = new System.Windows.Forms.Label();
             this.ClearFiltersButton = new System.Windows.Forms.Button();
             this.ProductNameCheckBox = new System.Windows.Forms.CheckBox();
             this.PriceCheckBox = new System.Windows.Forms.CheckBox();
@@ -164,32 +162,6 @@
             this.MaxPriceFilterTextBox.TabIndex = 10;
             this.MaxPriceFilterTextBox.TextChanged += new System.EventHandler(this.MaxPriceFilterTextBox_TextChanged);
             // 
-            // SortByComboBox
-            // 
-            this.SortByComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SortByComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SortByComboBox.FormattingEnabled = true;
-            this.SortByComboBox.Items.AddRange(new object[] {
-            "Default",
-            "Price: Low to high",
-            "Price: High to low",
-            "A --> Z"});
-            this.SortByComboBox.Location = new System.Drawing.Point(805, 123);
-            this.SortByComboBox.Name = "SortByComboBox";
-            this.SortByComboBox.Size = new System.Drawing.Size(197, 29);
-            this.SortByComboBox.TabIndex = 13;
-            this.SortByComboBox.SelectedIndexChanged += new System.EventHandler(this.SortByComboBox_SelectedIndexChanged);
-            // 
-            // SortByLabel
-            // 
-            this.SortByLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SortByLabel.AutoSize = true;
-            this.SortByLabel.Location = new System.Drawing.Point(736, 126);
-            this.SortByLabel.Name = "SortByLabel";
-            this.SortByLabel.Size = new System.Drawing.Size(63, 21);
-            this.SortByLabel.TabIndex = 12;
-            this.SortByLabel.Text = "Sort by:";
-            // 
             // ClearFiltersButton
             // 
             this.ClearFiltersButton.BackColor = System.Drawing.Color.IndianRed;
@@ -296,8 +268,6 @@
             this.Controls.Add(this.NewProductButton);
             this.Controls.Add(this.EnableFiltersGroupBox);
             this.Controls.Add(this.ClearFiltersButton);
-            this.Controls.Add(this.SortByComboBox);
-            this.Controls.Add(this.SortByLabel);
             this.Controls.Add(this.MaxPriceFilterTextBox);
             this.Controls.Add(this.PriceToFilterLabel);
             this.Controls.Add(this.MinPriceFilterTextBox);
@@ -337,8 +307,6 @@
         private System.Windows.Forms.TextBox MinPriceFilterTextBox;
         private System.Windows.Forms.Label PriceToFilterLabel;
         private System.Windows.Forms.TextBox MaxPriceFilterTextBox;
-        private System.Windows.Forms.ComboBox SortByComboBox;
-        private System.Windows.Forms.Label SortByLabel;
         private System.Windows.Forms.Button ClearFiltersButton;
         private System.Windows.Forms.CheckBox ProductNameCheckBox;
         private System.Windows.Forms.CheckBox PriceCheckBox;
