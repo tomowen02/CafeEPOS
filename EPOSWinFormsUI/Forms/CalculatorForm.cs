@@ -13,11 +13,7 @@ namespace EPOSWinFormsUI.Forms
 {
     public partial class CalculatorForm : Form
     {
-        // TODO - Fix scaling
-
-
-        Calculator calculator = new Calculator();
-
+        private Calculator calculator = new Calculator();
 
         public CalculatorForm()
         {
@@ -120,7 +116,7 @@ namespace EPOSWinFormsUI.Forms
         #endregion
 
 
-        #region Digit events
+        #region Operand events
         private void ZeroButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("0");
@@ -185,12 +181,6 @@ namespace EPOSWinFormsUI.Forms
         private void DecimalButton_Click(object sender, EventArgs e)
         {
             calculator.AddDecimal();
-
-            /*
-            if (expression.Last().IsNumeric())
-            {
-                expression[expression.Count - 1] += ".";
-            }*/
         }
 
         private void CloseFormButton_Click(object sender, EventArgs e)
