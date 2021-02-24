@@ -33,17 +33,21 @@ namespace EPOSWinFormsUI.Forms
             string username = UsernameTextBox.Text.Trim(); // Ignores the spaces before or after the username
             string password = PasswordTextBox.Text;
 
-            if (username != "") // Make sure that there is text inside of the input box
+            // Make sure that there is text inside of the input box
+            if (username != "")
             {
-                EmployeeModel user = EmployeeDataAccess.Load(username); // Load the user profile to see if the user exists
+                // Load the user profile to see if the user exists
+                EmployeeModel user = EmployeeDataAccess.Load(username);
 
-                if (UserLogin.AuthenticateUserCreds(username, password)) // The AuthenticateUserCreds method returns true if the credentials are correct
+                // The AuthenticateUserCreds method returns true if the credentials are correct
+                if (UserLogin.AuthenticateUserCreds(username, password)) 
                 {
                     // The login credentials are correct
 
                     Session.Employee = user;
 
-                    // Open this main window, hide this login screen, and reset the login screen so that it's ready for use if a user logs out
+                    // Open this main window, hide this login screen,
+                    // and reset the login screen so that it's ready for use if a user logs out
                     Form mainWindow = new MainWindowForm(this);
                     mainWindow.Show();
                     ResetForm();
