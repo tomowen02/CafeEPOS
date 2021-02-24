@@ -44,7 +44,7 @@ namespace EPOSWinFormsUI.Forms
 
             TransactionsDataGridView.Columns[0].HeaderText = "ID";
 
-            // Format the money columns to display the values in currentcy format
+            // Format the money columns to display the values in currency format
             TransactionsDataGridView.Columns["Total"].DefaultCellStyle.Format = "C2";
             TransactionsDataGridView.Columns["Change"].DefaultCellStyle.Format = "C2";
         }
