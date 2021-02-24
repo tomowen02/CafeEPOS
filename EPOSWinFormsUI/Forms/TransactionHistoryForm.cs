@@ -28,6 +28,8 @@ namespace EPOSWinFormsUI.Forms
 
         private void ApplyPerms()
         {
+            // Only users with a role ID of 2 or less (administrators and managers)
+            // should be able to view the full transaction history
             if (EPOSLibrary.LoginSystem.Session.Role.RoleID > 2)
             {
                 DailyOnlyCheckBox.Visible = false;
@@ -41,12 +43,16 @@ namespace EPOSWinFormsUI.Forms
             TransactionsDataGridView.DataSource = transactions;
 
             TransactionsDataGridView.Columns[0].HeaderText = "ID";
+
+            // Format the money columns to display the values in currentcy format
             TransactionsDataGridView.Columns["Total"].DefaultCellStyle.Format = "C2";
             TransactionsDataGridView.Columns["Change"].DefaultCellStyle.Format = "C2";
         }
 
         private void TotalChanged(object sender, TotalChangedEventArgs e)
         {
+            // When the total price in the SHoppingCart control has been changed,
+            // the textbox should be updated to display that information to the user
             TotalTextbox.Text = e.Total.ToString("C2");
         }
 
@@ -57,13 +63,18 @@ namespace EPOSWinFormsUI.Forms
 
         private void TransactionsDataGridView_SelectionChanged(object sender, EventArgs e)
         {
+            // Display the order contents of the selected transaction
+
             ShoppingCart.Clear();
 
             if (TransactionsDataGridView.SelectedRows.Count == 1)
             {
+                // Get all of the transactionItems objects related to the selected row
                 int transactionID = int.Parse(TransactionsDataGridView.SelectedRows[0].Cells["TransactionID"].Value.ToString());
                 List<TransactionItemModel> transactionItems = TransactionItemsDataAccess.Load(transactionID);
 
+                // For each product, add it to the shopping cart,
+                // along with the quantity to add
                 foreach (var transItem in transactionItems)
                 {
                     ProductModel product = ProductsDataAccess.LoadSingle(transItem.ProductID);
