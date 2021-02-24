@@ -29,7 +29,6 @@ namespace EPOSWinFormsUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.DeleteTypeButton = new System.Windows.Forms.Button();
             this.CloseFormButton = new System.Windows.Forms.Button();
             this.TransactionsDataGridView = new System.Windows.Forms.DataGridView();
             this.ShoppingCart = new EPOSWinFormsUI.UserControls.ShoppingCartUserControl();
@@ -39,17 +38,6 @@ namespace EPOSWinFormsUI.Forms
             this.DailyOnlyCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionsDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DeleteTypeButton
-            // 
-            this.DeleteTypeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteTypeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteTypeButton.Location = new System.Drawing.Point(12, 545);
-            this.DeleteTypeButton.Name = "DeleteTypeButton";
-            this.DeleteTypeButton.Size = new System.Drawing.Size(990, 54);
-            this.DeleteTypeButton.TabIndex = 45;
-            this.DeleteTypeButton.Text = "Delete";
-            this.DeleteTypeButton.UseVisualStyleBackColor = true;
             // 
             // CloseFormButton
             // 
@@ -80,7 +68,7 @@ namespace EPOSWinFormsUI.Forms
             this.TransactionsDataGridView.ReadOnly = true;
             this.TransactionsDataGridView.RowHeadersWidth = 82;
             this.TransactionsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransactionsDataGridView.Size = new System.Drawing.Size(642, 467);
+            this.TransactionsDataGridView.Size = new System.Drawing.Size(642, 540);
             this.TransactionsDataGridView.TabIndex = 37;
             this.TransactionsDataGridView.SelectionChanged += new System.EventHandler(this.TransactionsDataGridView_SelectionChanged);
             // 
@@ -92,7 +80,7 @@ namespace EPOSWinFormsUI.Forms
             this.ShoppingCart.Location = new System.Drawing.Point(674, 59);
             this.ShoppingCart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ShoppingCart.Name = "ShoppingCart";
-            this.ShoppingCart.Size = new System.Drawing.Size(327, 434);
+            this.ShoppingCart.Size = new System.Drawing.Size(327, 507);
             this.ShoppingCart.TabIndex = 46;
             this.ShoppingCart.Total = new decimal(new int[] {
             0,
@@ -105,7 +93,7 @@ namespace EPOSWinFormsUI.Forms
             this.TotalLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalLabel.AutoSize = true;
             this.TotalLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalLabel.Location = new System.Drawing.Point(845, 504);
+            this.TotalLabel.Location = new System.Drawing.Point(846, 577);
             this.TotalLabel.Name = "TotalLabel";
             this.TotalLabel.Size = new System.Drawing.Size(39, 17);
             this.TotalLabel.TabIndex = 48;
@@ -115,7 +103,7 @@ namespace EPOSWinFormsUI.Forms
             // 
             this.TotalTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalTextbox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalTextbox.Location = new System.Drawing.Point(890, 501);
+            this.TotalTextbox.Location = new System.Drawing.Point(890, 574);
             this.TotalTextbox.Name = "TotalTextbox";
             this.TotalTextbox.Size = new System.Drawing.Size(111, 25);
             this.TotalTextbox.TabIndex = 47;
@@ -154,7 +142,6 @@ namespace EPOSWinFormsUI.Forms
             this.Controls.Add(this.TotalLabel);
             this.Controls.Add(this.TotalTextbox);
             this.Controls.Add(this.ShoppingCart);
-            this.Controls.Add(this.DeleteTypeButton);
             this.Controls.Add(this.CloseFormButton);
             this.Controls.Add(this.TransactionsDataGridView);
             this.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -169,8 +156,6 @@ namespace EPOSWinFormsUI.Forms
         }
 
         #endregion
-
-        private System.Windows.Forms.Button DeleteTypeButton;
         private System.Windows.Forms.Button CloseFormButton;
         private System.Windows.Forms.DataGridView TransactionsDataGridView;
         private UserControls.ShoppingCartUserControl ShoppingCart;
