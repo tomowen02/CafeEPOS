@@ -107,10 +107,18 @@ namespace EPOSLibrary
 
         private void SendExpressionChanged()
         {
-            if (OnExpressionChanged == null) return;
-            OnExpressionChanged(this, new ExpressionChangedEventArgs(expression));
-        }
+            string expressionAsString = "";
 
+            // Display each section of the expression in the expression text box
+            foreach (string item in expression)
+            {
+                expressionAsString += item;
+            }
+
+
+            if (OnExpressionChanged == null) return;
+            OnExpressionChanged(this, new ExpressionChangedEventArgs(expressionAsString));
+        }
 
 
         private List<string> ConvertToRPN()
@@ -227,9 +235,9 @@ namespace EPOSLibrary
 
     public class ExpressionChangedEventArgs
     {
-        public List<string> Expression { get; private set; }
+        public string Expression { get; private set; }
 
-        public ExpressionChangedEventArgs(List<string> expression) 
+        public ExpressionChangedEventArgs(string expression) 
         {
             Expression = expression;
         }

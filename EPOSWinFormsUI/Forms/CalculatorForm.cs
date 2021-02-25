@@ -22,19 +22,12 @@ namespace EPOSWinFormsUI.Forms
             calculator.OnExpressionChanged += new Calculator.ExpressionChangedEvent(ExpressionChanged);
         }
 
+        // ExpressionChangedEvent raised by Calculator
         private void ExpressionChanged(object sender, ExpressionChangedEventArgs e)
-        {
-            DrawExpression(e.Expression);
-        }
-
-        private void DrawExpression(List<string> expression)
         {
             ExpressionTextBox.Text = "";
 
-            foreach (string item in expression)
-            {
-                ExpressionTextBox.Text += item;
-            }
+            ExpressionTextBox.Text = e.Expression;
 
             ResultTextbox.Text = "";
         }
@@ -47,7 +40,10 @@ namespace EPOSWinFormsUI.Forms
             {
                 try
                 {
+                    // Display the evaluated result to the user
                     ResultTextbox.Text = calculator.Equals().ToString();
+
+                    // Clear the contents of the expression without clearing the textbox
                     calculator.ClearWithoutVisual();
                 }
                 catch (Exception)
@@ -75,43 +71,36 @@ namespace EPOSWinFormsUI.Forms
         private void OpenBacketsButton_Click(object sender, EventArgs e)
         {
             calculator.AddOperand("(");
-            //AppendDigit("(");
         }
 
         private void CloseBacketsButton_Click(object sender, EventArgs e)
         {
             calculator.AddOperand(")");
-            //AppendDigit(")");
         }
 
         private void PowerButton_Click(object sender, EventArgs e)
         {
             calculator.AddOperand("^");
-            //AppendDigit("^");
         }
 
         private void MultiplyButton_Click(object sender, EventArgs e)
         {
             calculator.AddOperand("*");
-            //AppendDigit("*");
         }
 
         private void DivideButton_Click(object sender, EventArgs e)
         {
             calculator.AddOperand("/");
-            //AppendDigit("/");
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             calculator.AddOperand("+");
-            //AppendDigit("+");
         }
 
         private void SubtractButton_Click(object sender, EventArgs e)
         {
             calculator.AddOperand("-");
-            //AppendDigit("-");
         }
         #endregion
 
@@ -120,61 +109,51 @@ namespace EPOSWinFormsUI.Forms
         private void ZeroButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("0");
-            //AppendDigit("0");
         }
 
         private void OneButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("1");
-            //AppendDigit("1");
         }
 
         private void TwoButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("2");
-            //AppendDigit("2");
         }
 
         private void ThreeButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("3");
-            //AppendDigit("3");
         }
 
         private void FourButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("4");
-            //AppendDigit("4");
         }
 
         private void FiveButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("5");
-            //AppendDigit("5");
         }
 
         private void SixButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("6");
-            //AppendDigit("6");
         }
 
         private void SevenButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("7");
-            //AppendDigit("7");
         }
 
         private void EightButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("8");
-            //AppendDigit("8");
         }
 
         private void NineButton_Click(object sender, EventArgs e)
         {
             calculator.AddDigit("9");
-            //AppendDigit("9");
         }
         #endregion
 
