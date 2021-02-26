@@ -33,7 +33,6 @@ namespace EPOSWinFormsUI
         {
             InitializeComponent();
 
-
             ProductsTabs.ProductClicked += new ProductsTabsUserControl.ProductClickedEvent(AddToBasket);
             ShoppingCart.TotalChanged += new ShoppingCartUserControl.TotalChangedEvent(TotalChanged);
 
