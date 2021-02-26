@@ -8,14 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EPOSLibrary.Models;
-using System.Security.Cryptography.X509Certificates;
 
 namespace EPOSWinFormsUI.UserControls
 {
     public partial class ShoppingCartUserControl : UserControl
     {
-        //public static List<CartItemModel> CartItems { get; set; }
-        public static List<CartItemModel> CartItems = new List<CartItemModel>();
+        private static List<CartItemModel> CartItems = new List<CartItemModel>();
 
         private decimal total;
         public decimal Total
@@ -25,7 +23,7 @@ namespace EPOSWinFormsUI.UserControls
             {
                 total = value;
 
-                // Fire TotalChanged event
+                // Raise TotalChanged event
                 TotalChanged?.Invoke(this, new TotalChangedEventArgs() { Total = value });
             }
         }
@@ -38,6 +36,9 @@ namespace EPOSWinFormsUI.UserControls
         {
             InitializeComponent();
 
+            // Ensures that the program is actually in runtime
+            // This is needed as an error sometimes occurs where the constructor of a user control
+            // is executed during designtime of the control
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
                 UpdateCart();
@@ -78,9 +79,9 @@ namespace EPOSWinFormsUI.UserControls
 
         public void Add(ProductModel newProduct, int quantityToAdd = 1)
         {
-            bool isNew = true; // Turns true if the poduct is already in the cart
+            bool isNew = true; // Turns false if the product is already in the cart
 
-            // Determine if the poduct is already in the cart.
+            // Determine if the product is already in the cart.
             // If so, the quantity is incremented by 1
             foreach (var cartItem in CartItems)
             {
@@ -112,13 +113,15 @@ namespace EPOSWinFormsUI.UserControls
 
         public int? GetSelectedID()
         {
-            if (CartListView.SelectedItems.Count > 0)
+            if (CartListView.SelectedItems.Count >= 1)
             {
                 CartItemModel cartItem = (CartItemModel)CartListView.SelectedItems[0].Tag;
                 int productID = cartItem.Product.ProductID;
                 return productID;
             }
 
+            // This return statement is only reached if the
+            // number of selected items is less than 1
             return null;
         }
 
@@ -126,10 +129,13 @@ namespace EPOSWinFormsUI.UserControls
         {
             int selectedIndex = CartListView.SelectedIndices[0];
 
+            // Try to find the product in the cart with the same ID as the selected item
             foreach (var cartItem in CartItems)
             {
                 if (cartItem.Product.ProductID == productID)
                 {
+
+                    // Adjust the quantity
                     cartItem.Quantity -= 1;
 
                     if (cartItem.Quantity <= 0)
