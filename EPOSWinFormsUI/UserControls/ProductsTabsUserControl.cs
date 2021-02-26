@@ -25,9 +25,6 @@ namespace EPOSWinFormsUI.UserControls
         {
             InitializeComponent();
 
-            // Ensures that the program is actually in runtime
-            // This is needed as an error sometimes occurs where the constructor of a user control
-            // is executed during designtime of the control
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
                 InitializeControl();
@@ -38,7 +35,6 @@ namespace EPOSWinFormsUI.UserControls
         {
             List<ProductTypeModel> productTypes = ProductTypesDataAccess.Load();
 
-            // Create a new tab page for each product type
             foreach (var type in productTypes)
             {
                 TabPage tab = new TabPage
@@ -49,22 +45,20 @@ namespace EPOSWinFormsUI.UserControls
                     BackColor = Color.Transparent
                 };
 
-                FillTab(tab); // Fills the tabs with buttons
+                FillTab(tab);
 
                 int index = TillTabControl.TabPages.Count;
-                TillTabControl.TabPages.Insert(index, tab); // Add the tab to the control
+                TillTabControl.TabPages.Insert(index, tab);
 
 
             }
-
-            // For the search tab:
             FillProductTypeComboBox();
+
             Search();
         }
 
         private void FillTab(TabPage tab)
         {
-            //Use a flow layout panel to visually distribute the buttons
             FlowLayoutPanel ProductsFlowPanel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -72,19 +66,17 @@ namespace EPOSWinFormsUI.UserControls
             };
             tab.Controls.Add(ProductsFlowPanel);
 
-            // Make a list of all of the product buttons for this tab
             int productTypeID = Int32.Parse(tab.Name);
             List<ProductModel> products = ProductsDataAccess.Load(typeID: productTypeID).MergeSort();
             List<Button> buttonsList = CreateProductButtons(products);
 
-            // Separate the list of all of the buttons into sub pages
             List<List<Button>> productPages = CreateSubPages(ProductsFlowPanel, buttonsList);
-
             DisplayButtons(ProductsFlowPanel, productPages, (int)ProductsFlowPanel.Tag);
         }
 
         private List<Button> CreateProductButtons(List<ProductModel> products)
         {
+
             List<Button> buttonsList = new List<Button>();
 
             foreach (var product in products)
@@ -105,15 +97,12 @@ namespace EPOSWinFormsUI.UserControls
 
         private List<List<Button>> CreateSubPages(FlowLayoutPanel ProductsFlowPanel, List<Button> buttonsList)
         {
-            // Each sub page is consists of a list of buttons
-            // Therefore, a list of subpages is a list of lists of buttons
-
             ProductsFlowPanel.Controls.Clear();
 
             int numberOfProducts = buttonsList.Count;
 
             var productPages = new List<List<Button>>();
-            for (int i = 0; i < numberOfProducts; i++) // For each product
+            for (int i = 0; i < numberOfProducts; i++)
             {
                 // Check if this needs to be on a new page
                 if (i % ITEMSPERPAGE == 0)
@@ -123,8 +112,6 @@ namespace EPOSWinFormsUI.UserControls
                     // Check if this is NOT the first page
                     if (productPages.Count > 0)
                     {
-                        // Add page navigation buttons 
-
                         Button nextPageButton = new Button
                         {
                             Text = "NEXT PAGE >>"
@@ -142,17 +129,15 @@ namespace EPOSWinFormsUI.UserControls
                         newPage.Insert(0, prevPageButton);
                     }
 
-                    newPage.Add(buttonsList[i]); // Add the first item of this new page to the page
+                    newPage.Add(buttonsList[i]);
 
-                    productPages.Add(newPage); // Add this page to the page list
+                    productPages.Add(newPage);
                 }
                 else
                 {
-                    // This product will be added to the last existing page
                     productPages.Last().Add(buttonsList[i]);
                 }
             }
-
             if (numberOfProducts == 0)
             {
                 // There still needs to be an empty page
@@ -161,7 +146,7 @@ namespace EPOSWinFormsUI.UserControls
             }
 
             int currentPage = 0;
-            ProductsFlowPanel.Tag = currentPage; // This is used to keep track of the current page
+            ProductsFlowPanel.Tag = currentPage;
 
             return productPages;
         }
@@ -178,8 +163,6 @@ namespace EPOSWinFormsUI.UserControls
 
         private void ProductButton_Clicked(object sender, EventArgs e)
         {
-            // Raise the ProductClicked event
-
             if (ProductClicked == null) return;
 
             Button button = (Button)sender;
@@ -216,12 +199,11 @@ namespace EPOSWinFormsUI.UserControls
         {
             List<ProductModel> products;
 
-            // Get the search parameters from the input boxes
             string searchText = TillTabControl.TabPages["search"].Controls["SearchTextbox"].Text.Trim();
             ComboBox combo = (ComboBox)TillTabControl.TabPages["search"].Controls["productTypeComboBox"];
             int typeID = ((ProductTypeModel)combo.SelectedItem).ProductTypeID;
 
-            // Use the data access to filter the results
+
             if (FilterByTypeCheckBox.Checked)
             {
                 products = ProductsDataAccess.Load(searchTerm: searchText, typeID: typeID);
@@ -231,11 +213,11 @@ namespace EPOSWinFormsUI.UserControls
                 products = ProductsDataAccess.Load(searchTerm: searchText);
             }
 
-            products = products.MergeSort(); // Sort the products in alphanumerical order
+            products = products.MergeSort();
 
-            // Create and display the buttons
             List<Button> buttonsList = CreateProductButtons(products);
             FlowLayoutPanel SearchProductsFlowPanel = (FlowLayoutPanel)TillTabControl.TabPages["search"].Controls["SearchProductsFlowPanel"];
+
 
             List<List<Button>> productPages = CreateSubPages(SearchProductsFlowPanel, buttonsList);
             DisplayButtons(SearchProductsFlowPanel, productPages, (int)SearchProductsFlowPanel.Tag);
