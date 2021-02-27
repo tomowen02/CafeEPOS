@@ -15,7 +15,7 @@ namespace EPOSLibrary
             bool chunkAdded = true;
             int followMarker = 0;
 
-            // While there are still characteres left in the string
+            // While there are still characters left in the string
             while (leadingMarker != str.Length)
             {
                 // If the leading marker needs to be reset due to this being the first pass, or a new string Chunk has been found
