@@ -48,7 +48,7 @@ namespace EPOSLibrary.LoginSystem
             hash = "";
             for (int i = 0; i < triplets.Count; i++)
             {
-                int asciiValue = int.Parse(triplets[i]) % 94; // There are 94 readable characters on an acii table
+                int asciiValue = int.Parse(triplets[i]) % 94; // There are 94 readable characters on an ascii table
                 asciiValue += 33; // Makes sure that the ascii numbers are within the readable range
                 if (asciiValue == 34 || asciiValue == 39) // Make sure that the character is not " or ' as these are escape characters for strings
                 {

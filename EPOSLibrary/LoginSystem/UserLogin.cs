@@ -16,7 +16,7 @@ namespace EPOSLibrary.LoginSystem
 
             if (user != null) // If there is a user matching the username
             {
-                // Retrive the hash and the salt from the database
+                // Retrieve the hash and the salt from the database
                 string salt = user.Salt;
                 string hashFromDatabase = user.HashedPass;
 
