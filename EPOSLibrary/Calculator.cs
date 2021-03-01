@@ -15,11 +15,6 @@ namespace EPOSLibrary
         List<string> expression = new List<string>();
 
 
-        public List<string> GetExpression()
-        {
-            return expression;
-        }
-
         public void AddDigit(string digit)
         {
             string lastItem = "";
