@@ -29,6 +29,13 @@ namespace EPOSLibrary.DataAccess
             }
         }
 
+        public static List<EmployeeModel> LoadAll()
+        {
+            string query = "SELECT EmployeeUsername, Firstname, Lastname, Email, Phone, HashedPass, isActive, RoleID, Salt FROM Employees";
+
+            return Query(query);
+        }
+
         public static string LoadHash(string username)
         {
             string query = "SELECT HashedPass FROM Employees WHERE EmployeeUsername = @username";
@@ -54,9 +61,9 @@ namespace EPOSLibrary.DataAccess
 
         public static EmployeeModel Save(EmployeeModel employee)
         {
-            string query = "INSERT INTO Employees" +
-                "(EmployeeUsername, Firstname, Lastname, Email, Phone, HashedPass, isActive, RoleID)" +
-                "VALUES (EmployeeUsername= @EmployeeUsername, Firstname = @Firstname, Lastname = @Lastname, Email = @Email, Phone = @Phone, HashedPass = @HashedPass, isActive = @isActive, RoleID = @RoleID)";
+            string query = "INSERT INTO Employees " +
+                "(EmployeeUsername, Firstname, Lastname, Email, Phone, HashedPass, isActive, RoleID, Salt) " +
+                "VALUES (@EmployeeUsername, @Firstname, @Lastname, @Email, @Phone, @HashedPass, @isActive, @RoleID, @Salt)";
 
             var parameters = new DynamicParameters();
             parameters.Add("@EmployeeUsername", employee.EmployeeUsername);
@@ -67,10 +74,29 @@ namespace EPOSLibrary.DataAccess
             parameters.Add("@HashedPass", employee.HashedPass);
             parameters.Add("@isActive", employee.isActive);
             parameters.Add("@RoleID", employee.RoleID);
+            parameters.Add("@Salt", employee.Salt);
 
             Execute(query, parameters);
 
             return employee;
+        }
+
+        public static void Update(EmployeeModel employee)
+        {
+            string query = "UPDATE Employees SET EmployeeUsername = @EmployeeUsername, Firstname = @Firstname, Lastname = @Lastname, Email = @Email, Phone = @Phone, HashedPass = @HashedPass, isActive = @isActive, RoleID = @RoleID, Salt = @Salt WHERE EmployeeUsername = @EmployeeUsername";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmployeeUsername", employee.EmployeeUsername);
+            parameters.Add("@Firstname", employee.Firstname);
+            parameters.Add("@Lastname", employee.Lastname);
+            parameters.Add("@Email", employee.Email);
+            parameters.Add("@Phone", employee.Phone);
+            parameters.Add("@HashedPass", employee.HashedPass);
+            parameters.Add("@isActive", employee.isActive);
+            parameters.Add("@RoleID", employee.RoleID);
+            parameters.Add("@Salt", employee.Salt);
+
+            Execute(query, parameters);
         }
 
         public static void ChangePassword(string employeeUsername, string hashedPassword, string salt)

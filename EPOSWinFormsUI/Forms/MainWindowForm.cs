@@ -136,6 +136,11 @@ namespace EPOSWinFormsUI.Forms
         {
             OpenChildForm(new CalculatorForm());
         }
+
+        private void AdminControlsButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AdminControlsForm());
+        }
         #endregion
 
         private void MainWindowForm_FormClosing(object sender, FormClosingEventArgs e)

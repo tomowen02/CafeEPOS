@@ -72,6 +72,12 @@ namespace EPOSLibrary.LoginSystem
             return false;
         }
 
+        public static string GenerateSalt()
+        {
+            Random randomNumGen = new Random();
+            string salt = randomNumGen.Next(10000, 99999).ToString();
 
+            return salt;
+        }
     }
 }

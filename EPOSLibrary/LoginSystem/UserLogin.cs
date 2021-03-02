@@ -14,7 +14,7 @@ namespace EPOSLibrary.LoginSystem
         {
             EmployeeModel user = EmployeeDataAccess.Load(username); // Load the user profile to see if the user exists
 
-            if (user != null) // If there is a user matching the username
+            if (user != null && user.isActive) // If there is a user matching the username and the account is enabled
             {
                 // Retrieve the hash and the salt from the database
                 string salt = user.Salt;

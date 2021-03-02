@@ -107,6 +107,7 @@
             this.AdminControlsButton.Text = "Admin Controls";
             this.AdminControlsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.AdminControlsButton.UseVisualStyleBackColor = true;
+            this.AdminControlsButton.Click += new System.EventHandler(this.AdminControlsButton_Click);
             // 
             // CalculatorButton
             // 

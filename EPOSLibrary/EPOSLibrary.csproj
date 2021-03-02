@@ -66,6 +66,7 @@
     <Compile Include="LoginSystem\Hashing.cs" />
     <Compile Include="LoginSystem\Session.cs" />
     <Compile Include="LoginSystem\UserLogin.cs" />
+    <Compile Include="LoginSystem\Validation.cs" />
     <Compile Include="MergeSort.cs" />
     <Compile Include="Models\CartItemModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />

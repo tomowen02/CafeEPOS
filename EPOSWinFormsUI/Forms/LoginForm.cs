@@ -36,13 +36,12 @@ namespace EPOSWinFormsUI.Forms
             // Make sure that there is text inside of the input box
             if (username != "")
             {
-                // Load the user profile to see if the user exists
-                EmployeeModel user = EmployeeDataAccess.Load(username);
-
                 // The AuthenticateUserCreds method returns true if the credentials are correct
                 if (UserLogin.AuthenticateUserCreds(username, password)) 
                 {
                     // The login credentials are correct
+
+                    EmployeeModel user = EmployeeDataAccess.Load(username);
 
                     Session.Employee = user;
 
