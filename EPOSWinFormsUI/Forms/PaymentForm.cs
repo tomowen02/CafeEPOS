@@ -42,7 +42,7 @@ namespace EPOSWinFormsUI.Forms
             {
                 decimal amountGiven = Decimal.Parse(AmountGivenTextbox.Text);
 
-                if (amountGiven > 0) { total = PaymentDue - amountGiven; }
+                if (amountGiven >= 0) { total = PaymentDue - amountGiven; }
                 else { throw new Exception("Negative number was given"); }
             }
             catch
