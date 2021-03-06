@@ -13,7 +13,7 @@ namespace EPOSLibrary.DataAccess
     {
         public static List<TransactionItemModel> Load(int transactionID)
         {
-            string query = "SELECT TransactionID, ProductID, Quantity, CurrentUnitPrice " +
+            string query = "SELECT TransactionID, ProductID, Quantity, CurrentUnitPrice/100.0 AS CurrentUnitPrice " +
                 "FROM TransactionItems " +
                 "WHERE TransactionID = @TransactionID;";
 
@@ -26,7 +26,7 @@ namespace EPOSLibrary.DataAccess
         public static void Save(TransactionItemModel transactionItem)
         {
             string query = "INSERT INTO TransactionItems (TransactionID, ProductID, Quantity, CurrentUnitPrice) " +
-                "VALUES (@TransactionID, @ProductID, @Quantity, @CurrentUnitPrice); ";
+                "VALUES (@TransactionID, @ProductID, @Quantity, @CurrentUnitPrice*100); ";
 
             var parameters = new DynamicParameters();
             parameters.Add("@TransactionID", transactionItem.TransactionID);
