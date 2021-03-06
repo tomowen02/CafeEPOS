@@ -42,6 +42,7 @@ namespace EPOSWinFormsUI.Forms
         {
             ProductsDataGridView.DataSource = products;
             ProductsDataGridView.Columns["Price"].DefaultCellStyle.Format = "C2";
+            ProductsDataGridView.Columns["isActive"].Visible = false;
         }
 
         private void Filter()
@@ -215,7 +216,7 @@ namespace EPOSWinFormsUI.Forms
                 try
                 {
                     int productID = GetSelectedProduct().ProductID;
-                    ProductsDataAccess.Delete(productID);
+                    ProductsDataAccess.Disable(productID);
 
                     MessageBox.Show("Product has been deleted");
                 }

@@ -240,7 +240,7 @@
             this.DeleteProductButton.Name = "DeleteProductButton";
             this.DeleteProductButton.Size = new System.Drawing.Size(316, 54);
             this.DeleteProductButton.TabIndex = 22;
-            this.DeleteProductButton.Text = "Delete";
+            this.DeleteProductButton.Text = "Disable";
             this.DeleteProductButton.UseVisualStyleBackColor = true;
             this.DeleteProductButton.Click += new System.EventHandler(this.DeleteProductButton_Click);
             // 

@@ -17,7 +17,7 @@ namespace EPOSLibrary.DataAccess
         /// </summary>
         public static ProductModel LoadSingle(int id)
         {
-            string query = "SELECT ProductID, Description, ProductTypeID, Price/100.0 AS Price FROM Products WHERE ProductID = @id";
+            string query = "SELECT ProductID, Description, ProductTypeID, Price/100.0 AS Price, isActive FROM Products WHERE ProductID = @id";
             var parameters = new DynamicParameters();
             parameters.Add("@id", id);
 
@@ -29,7 +29,7 @@ namespace EPOSLibrary.DataAccess
         /// </summary>
         public static List<ProductModel> Load(string searchTerm = "", int typeID = -1, decimal minPrice = -1, decimal maxPrice = -1)
         {
-            string query = "SELECT ProductID, Description, ProductTypeID, Price/100.0 AS Price FROM Products";
+            string query = "SELECT ProductID, Description, ProductTypeID, Price/100.0 AS Price, isActive FROM Products WHERE isActive = True";
 
             List<string> conditions = new List<string>(); // This will store a list of the extra parts of the query specific to each filter
             var parameters = new DynamicParameters();
@@ -62,16 +62,8 @@ namespace EPOSLibrary.DataAccess
             // The different conditions must now be concatenated to the end of he query
             for (int i = 0; i < conditions.Count; i++)
             {
-                if (i == 0)
-                {
-                    // This is the first condition, so WHERE needs to be inserted before the condition
-                    query += " WHERE";
-                }
-                else
-                {
-                    // There has already been previous conditions so the AND operator means that this new condition must also be met
-                    query += " AND";
-                }
+                // There has already been previous conditions so the AND operator means that this new condition must also be met
+                query += " AND";
                 query += ' ' + conditions[i];
             }
 
@@ -115,9 +107,9 @@ namespace EPOSLibrary.DataAccess
         /// <summary>
         /// Deletes a row from the products table from the database based on its ProductID
         /// </summary>
-        public static void Delete(int id)
+        public static void Disable(int id)
         {
-            string query = "DELETE FROM Products WHERE ProductID = @ProductID";
+            string query = "UPDATE Products SET isActive = False WHERE ProductID = @ProductID";
 
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@ProductID", id);
