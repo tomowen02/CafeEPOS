@@ -1,4 +1,5 @@
-﻿using EPOSLibrary.DataAccess;
+﻿using EPOSLibrary;
+using EPOSLibrary.DataAccess;
 using EPOSLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -73,27 +74,35 @@ namespace EPOSWinFormsUI.Forms
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            if (ProductDescriptionTextbox.Text != "" & PriceTextbox.Text != "")
+            try { ValidateFields(); }
+            catch (Exception ex) 
             {
-                ProductModel product = new ProductModel();
-                product.Description = ProductDescriptionTextbox.Text;
-                product.ProductTypeID = ((ProductTypeModel)ProductTypeComboBox.SelectedItem).ProductTypeID;
-                product.Price = Decimal.Parse(PriceTextbox.Text);
-
-                if (ExistingProduct != null)
-                {
-                    product.ProductID = ExistingProduct.ProductID;
-                }
-
-                ProductGenerated(this, new ProductGeneratedEventArgs() { IsNewItem = IsNewItem, Product = product });
-
-                this.Close();
+                MessageBox.Show(ex.Message);
+                return;
             }
-            else
+
+            ProductModel product = new ProductModel();
+            product.Description = ProductDescriptionTextbox.Text;
+            product.ProductTypeID = ((ProductTypeModel)ProductTypeComboBox.SelectedItem).ProductTypeID;
+            product.Price = Decimal.Parse(PriceTextbox.Text);
+
+            if (ExistingProduct != null)
             {
-                MessageBox.Show("Invalid values");
+                product.ProductID = ExistingProduct.ProductID;
             }
-            
+
+            ProductGenerated(this, new ProductGeneratedEventArgs() { IsNewItem = IsNewItem, Product = product });
+
+            this.Close();
+        }
+
+        private void ValidateFields()
+        {
+            if (ProductDescriptionTextbox.Text.Trim() == "")
+                throw new Exception("Please enter a product name");
+
+            if (!PriceTextbox.Text.IsNumeric())
+                throw new Exception("Please enter a valid price");
         }
     }
 

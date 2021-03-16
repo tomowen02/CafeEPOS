@@ -161,6 +161,7 @@ namespace EPOSWinFormsUI.Forms
             // 
             // ConfirmPassTextBox
             // 
+            this.ConfirmPassTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ConfirmPassTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ConfirmPassTextBox.Location = new System.Drawing.Point(12, 422);
             this.ConfirmPassTextBox.Name = "ConfirmPassTextBox";
@@ -169,6 +170,7 @@ namespace EPOSWinFormsUI.Forms
             // 
             // ConfirmPassLabel
             // 
+            this.ConfirmPassLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ConfirmPassLabel.AutoSize = true;
             this.ConfirmPassLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ConfirmPassLabel.Location = new System.Drawing.Point(8, 398);
@@ -179,6 +181,7 @@ namespace EPOSWinFormsUI.Forms
             // 
             // NewPassTextBox
             // 
+            this.NewPassTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.NewPassTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.NewPassTextBox.Location = new System.Drawing.Point(12, 357);
             this.NewPassTextBox.Name = "NewPassTextBox";
@@ -187,6 +190,7 @@ namespace EPOSWinFormsUI.Forms
             // 
             // NewPassLabel
             // 
+            this.NewPassLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.NewPassLabel.AutoSize = true;
             this.NewPassLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.NewPassLabel.Location = new System.Drawing.Point(8, 333);
