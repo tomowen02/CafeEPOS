@@ -24,6 +24,8 @@ namespace EPOSWinFormsUI.Forms
             UpdateData();
 
             ShoppingCart.TotalChanged += new ShoppingCartUserControl.TotalChangedEvent(TotalChanged);
+
+            ShoppingCart.Clear();
         }
 
         private void ApplyPerms()
