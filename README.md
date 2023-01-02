@@ -30,7 +30,7 @@ This project was written for an examined software practical and received 98/100 
 [![Hui2DgV.md.png](https://iili.io/Hui2DgV.md.png)](https://freeimage.host/i/Hui2DgV)
 
 ##### Admin controls
-[![Hui39mF.md.png](https://iili.io/Hui39mF.md.png)](https://freeimage.host/i/Hui39mF
+[![Hui39mF.md.png](https://iili.io/Hui39mF.md.png)](https://freeimage.host/i/Hui39mF)
 
 ##### Options for users with restricted access
 [![HuiqdyN.png](https://iili.io/HuiqdyN.png)](https://freeimage.host/)
