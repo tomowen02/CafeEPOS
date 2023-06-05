@@ -12,7 +12,7 @@ This project was written for an examined software practical and received 98/100 
 - [Coming soon] - Daily cash-up report and tools for checking if the correct amount of cash is in the till
 - Built-in advanced calculator for evaluating multi-part expressions
 
-### Techlologies/ stack used
+### Techlologies used
 - C# (.NET framework/ winforms)
 - SQL (SQLite)
 
